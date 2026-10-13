@@ -1,0 +1,10 @@
+source leaprc.protein.ff19SB
+source leaprc.water.opc
+pep = sequence { NALA HIE CYS ASP LYS GLU TRP PHE SER CALA }
+saveamberparm pep vac.parm7 vac.rst7
+solvatebox pep OPCBOX 8.0
+addions pep Na+ 0
+addions pep Cl- 2
+addions pep Na+ 2
+saveamberparm pep solv.parm7 solv.rst7
+quit

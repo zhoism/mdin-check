@@ -1,0 +1,490 @@
+-I: Adding /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/prep to search path.
+-I: Adding /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib to search path.
+-I: Adding /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/parm to search path.
+-I: Adding /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/cmd to search path.
+-f: Source build.leap.
+
+Welcome to LEaP!
+(no leaprc in search path)
+Sourcing: ./build.leap
+----- Source: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/cmd/leaprc.protein.ff19SB
+----- Source of /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/cmd/leaprc.protein.ff19SB done
+Log file: ./leap.log
+Loading parameters: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/parm/parm19.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA + ff19SB
+Loading parameters: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/parm/frcmod.ff19SB
+Reading force field modification type file (frcmod)
+Reading title:
+ff19SB AA-specific backbone CMAPs for protein 07/25/2019
+Loading library: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib/amino19.lib
+Loading library: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib/aminoct12.lib
+Loading library: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib/aminont12.lib
+----- Source: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/cmd/leaprc.water.opc
+----- Source of /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/cmd/leaprc.water.opc done
+Loading library: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib/atomic_ions.lib
+Loading library: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib/solvents.lib
+Loading parameters: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/parm/frcmod.opc
+Reading force field modification type file (frcmod)
+Reading title:
+Parameters for OPC water (JPCL, 2014, 5 (21), pp 3863-3871)
+Loading parameters: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/parm/frcmod.ionslm_126_opc
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of atomic ions for the OPC water model (12-6 set)
+Checking Unit.
+
+/opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/bin/teLeap: Warning!
+The unperturbed charge of the unit (-1.000000) is not zero.
+
+/opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/bin/teLeap: Note.
+Ignoring the warning from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 40 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CALA	1
+	NALA	1
+  )
+ (no restraints)
+  Solute vdw bounding box:              34.816 23.513 10.516
+  Total bounding box for atom centers:  50.816 39.513 26.516
+  Solvent unit box:                     18.865 18.478 19.006
+  Total vdw box size:                   53.869 42.910 29.206 angstroms.
+  Volume: 67508.558 A^3 
+  Total mass 28036.138 amu,  Density 0.690 g/cc
+  Added 1490 residues.
+1 Na+ ion required to neutralize.
+Adding 1 counter ions to "pep" using 1A grid
+Grid extends from solute vdw + 1.47  to  7.45
+Resolution:      1.00 Angstrom.
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(No solvent overlap)
+Placed Na+ in pep at (0.69, -5.17, -2.98).
+
+Done adding ions.
+Cl- has a charge of 0.
+Adding the ions anyway.
+Adding 2 counter ions to "pep" using 1A grid
+Grid extends from solute vdw + 2.36  to  8.34
+Resolution:      1.00 Angstrom.
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(Replacing solvent molecule)
+Placed Cl- in pep at (-18.38, -11.03, -2.60).
+(Replacing solvent molecule)
+Placed Cl- in pep at (-2.82, 7.76, 4.12).
+
+Done adding ions.
+Adding 2 counter ions to "pep" using 1A grid
+Grid extends from solute vdw + 1.47  to  7.83
+Resolution:      1.00 Angstrom.
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(Replacing solvent molecule)
+Placed Na+ in pep at (16.39, 11.65, -2.63).
+(Replacing solvent molecule)
+Placed Na+ in pep at (6.94, -1.99, -5.62).
+
+Done adding ions.
+Checking Unit.
+
+/opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/bin/teLeap: Note.
+Ignoring the warnings from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 40 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CALA	1
+	NALA	1
+  )
+ (no restraints)
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 1; Notes = 2.
+}
+>>   { 0 "HID" "NHID" } { 1 "HID" "CHID" }
+>>   { 0 "HIE" "NHIE" } { 1 "HIE" "CHIE" }
+>>   { 0 "HIP" "NHIP" } { 1 "HIP" "CHIP" }
+>>   { 0 "ILE" "NILE" } { 1 "ILE" "CILE" }
+>>   { 0 "LEU" "NLEU" } { 1 "LEU" "CLEU" }
+>>   { 0 "LYS" "NLYS" } { 1 "LYS" "CLYS" }
+>>   { 0 "MET" "NMET" } { 1 "MET" "CMET" }
+>>   { 0 "PHE" "NPHE" } { 1 "PHE" "CPHE" }
+>>   { 0 "PRO" "NPRO" } { 1 "PRO" "CPRO" }
+>>   { 0 "SER" "NSER" } { 1 "SER" "CSER" }
+>>   { 0 "THR" "NTHR" } { 1 "THR" "CTHR" }
+>>   { 0 "TRP" "NTRP" } { 1 "TRP" "CTRP" }
+>>   { 0 "TYR" "NTYR" } { 1 "TYR" "CTYR" }
+>>   { 0 "VAL" "NVAL" } { 1 "VAL" "CVAL" }
+>>   { 0 "HIS" "NHIS" } { 1 "HIS" "CHIS" }
+>> }
+>> 
+>> #
+>> # assume that most often proteins use HIE
+>> #
+>> NHIS = NHIE
+>> HIS = HIE
+>> CHIS = CHIE
+> 
+> source leaprc.water.opc
+----- Source: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/cmd/leaprc.water.opc
+----- Source of /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/cmd/leaprc.water.opc done
+>> #
+>> #  Load OPC water model and ions for OPC + Li/Merz ion parameters
+>> #  (-1 to +4, 12-6 normal usage set)
+>> # 
+>> addAtomTypes {
+>> 	{ "F-"   "F" "sp3" }
+>> 	{ "Cl-"  "Cl" "sp3" }
+>> 	{ "Br-"  "Br" "sp3" }
+>> 	{ "I-"   "I"  "sp3" }
+>> 	{ "Li+"  "Li"  "sp3" }
+>> 	{ "Na+"  "Na"  "sp3" }
+>> 	{ "K+"  "K"  "sp3" }
+>> 	{ "Rb+"  "Rb"  "sp3" }
+>> 	{ "Cs+"  "Cs"  "sp3" }
+>> 	{ "Mg+"  "Mg"  "sp3" }
+>>     { "Tl+"  "Tl"  "sp3" }
+>>     { "Cu+"  "Cu"  "sp3" }
+>>     { "Ag+"  "Ag"  "sp3" }
+>>     { "Be2+" "Be"  "sp3" }
+>>     { "Cu2+" "Cu"  "sp3" }
+>>     { "Ni2+" "Ni"  "sp3" }
+>>     { "Pt2+" "Pt"  "sp3" }
+>>     { "Zn2+" "Zn"  "sp3" }
+>>     { "Co2+" "Co"  "sp3" }
+>>     { "Pd2+" "Pd"  "sp3" }
+>>     { "Ag2+" "Ag"  "sp3" }
+>>     { "Cr2+" "Cr"  "sp3" }
+>>     { "Fe2+" "Fe"  "sp3" }
+>>     { "Mg2+" "Mg"  "sp3" }
+>>     { "V2+"  "V"   "sp3" }
+>>     { "Mn2+" "Mn"  "sp3" }
+>>     { "Hg2+" "Hg"  "sp3" }
+>>     { "Cd2+" "Cd"  "sp3" }
+>>     { "Yb2+" "Yb"  "sp3" }
+>>     { "Ca2+" "Ca"  "sp3" }
+>>     { "Sn2+" "Sn"  "sp3" }
+>>     { "Pb2+" "Pb"  "sp3" }
+>>     { "Eu2+" "Eu"  "sp3" }
+>>     { "Sr2+" "Sr"  "sp3" }
+>>     { "Sm2+" "Sm"  "sp3" }
+>>     { "Ba2+" "Ba"  "sp3" }
+>>     { "Ra2+" "Ra"  "sp3" }
+>>     { "Al3+" "Al"  "sp3" }
+>>     { "Fe3+" "Fe"  "sp3" }
+>>     { "Cr3+" "Cr"  "sp3" }
+>>     { "In3+" "In"  "sp3" }
+>>     { "Tl3+" "Tl"  "sp3" }
+>>     { "Y3+"  "Y"   "sp3" }
+>>     { "La3+" "La"  "sp3" }
+>>     { "Ce3+" "Ce"  "sp3" }
+>>     { "Pr3+" "Pr"  "sp3" }
+>>     { "Nd3+" "Nd"  "sp3" }
+>>     { "Sm3+" "Sm"  "sp3" }
+>>     { "Eu3+" "Eu"  "sp3" }
+>>     { "Gd3+" "Gd"  "sp3" }
+>>     { "Tb3+" "Tb"  "sp3" }
+>>     { "Dy3+" "Dy"  "sp3" }
+>>     { "Er3+" "Er"  "sp3" }
+>>     { "Tm3+" "Tm"  "sp3" }
+>>     { "Lu3+" "Lu"  "sp3" }
+>>     { "Hf4+" "Hf"  "sp3" }
+>>     { "Zr4+" "Zr"  "sp3" }
+>>     { "Ce4+" "Ce"  "sp3" }
+>>     { "U4+"  "U"   "sp3" }
+>>     { "Pu4+" "Pu"  "sp3" }
+>>     { "Th4+" "Th"  "sp3" }
+>>     { "OW"   "O"   "sp3" }
+>>     { "HW"   "H"   "sp3" }
+>>     { "EP"   ""    "sp3" }
+>> }
+>> loadOff atomic_ions.lib
+Loading library: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib/atomic_ions.lib
+Loading: AG
+Loading: AL
+Loading: Ag
+Loading: BA
+Loading: BR
+Loading: Be
+Loading: CA
+Loading: CD
+Loading: CE
+Loading: CL
+Loading: CO
+Loading: CR
+Loading: CS
+Loading: CU
+Loading: CU1
+Loading: Ce
+Loading: Cl-
+Loading: Cr
+Loading: Dy
+Loading: EU
+Loading: EU3
+Loading: Er
+Loading: F
+Loading: FE
+Loading: FE2
+Loading: GD3
+Loading: H3O+
+Loading: HE+
+Loading: HG
+Loading: HZ+
+Loading: Hf
+Loading: IN
+Loading: IOD
+Loading: K
+Loading: K+
+Loading: LA
+Loading: LI
+Loading: LU
+Loading: MG
+Loading: MN
+Loading: NA
+Loading: NH4
+Loading: NI
+Loading: Na+
+Loading: Nd
+Loading: PB
+Loading: PD
+Loading: PR
+Loading: PT
+Loading: Pu
+Loading: RB
+Loading: Ra
+Loading: SM
+Loading: SR
+Loading: Sm
+Loading: Sn
+Loading: TB
+Loading: TL
+Loading: Th
+Loading: Tl
+Loading: Tm
+Loading: U4+
+Loading: V2+
+Loading: Y
+Loading: YB2
+Loading: ZN
+Loading: Zr
+>> loadOff solvents.lib
+Loading library: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/lib/solvents.lib
+Loading: CHCL3BOX
+Loading: DC4
+Loading: FB3
+Loading: FB3BOX
+Loading: FB4
+Loading: FB4BOX
+Loading: MEOHBOX
+Loading: NMABOX
+Loading: O3P
+Loading: OP3
+Loading: OPC
+Loading: OPC3BOX
+Loading: OPC3POLBOX
+Loading: OPCBOX
+Loading: PL3
+Loading: POL3BOX
+Loading: QSPCFWBOX
+Loading: SPC
+Loading: SPCBOX
+Loading: SPCFWBOX
+Loading: SPF
+Loading: SPG
+Loading: T4E
+Loading: TIP3PBOX
+Loading: TIP3PFBOX
+Loading: TIP4PBOX
+Loading: TIP4PEWBOX
+Loading: TIP5PBOX
+Loading: TP3
+Loading: TP4
+Loading: TP5
+Loading: TPF
+>> HOH = OPC
+>> WAT = OPC
+>> loadAmberParams frcmod.opc
+Loading parameters: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/parm/frcmod.opc
+Reading force field modification type file (frcmod)
+Reading title:
+Parameters for OPC water (JPCL, 2014, 5 (21), pp 3863-3871)
+(UNKNOWN ATOM TYPE: EP)
+>> loadAmberParams frcmod.ionslm_126_opc
+Loading parameters: /opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/dat/leap/parm/frcmod.ionslm_126_opc
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of atomic ions for the OPC water model (12-6 set)
+>> 
+> 
+> pep = sequence { NALA HIE CYS ASP LYS GLU TRP PHE SER CALA }
+Sequence: NALA
+Sequence: HIE
+Sequence: CYS
+Sequence: ASP
+Sequence: LYS
+Sequence: GLU
+Sequence: TRP
+Sequence: PHE
+Sequence: SER
+Sequence: CALA
+> saveamberparm pep vac.parm7 vac.rst7
+Checking Unit.
+
+/opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/bin/teLeap: Warning!
+The unperturbed charge of the unit (-1.000000) is not zero.
+
+/opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/bin/teLeap: Note.
+Ignoring the warning from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 40 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CALA	1
+	NALA	1
+  )
+ (no restraints)
+> solvatebox pep OPCBOX 8.0
+  Solute vdw bounding box:              34.816 23.513 10.516
+  Total bounding box for atom centers:  50.816 39.513 26.516
+  Solvent unit box:                     18.865 18.478 19.006
+The number of boxes:  x= 3  y= 3  z= 2
+  Total vdw box size:                   53.869 42.910 29.206 angstroms.
+  Volume: 67508.558 A^3 
+  Total mass 28036.138 amu,  Density 0.690 g/cc
+  Added 1490 residues.
+> addions pep Na+ 0
+1 Na+ ion required to neutralize.
+Adding 1 counter ions to "pep" using 1A grid
+Total solute charge:  -1.00  Max atom radius:   1.98
+Grid extends from solute vdw + 1.47  to  7.45
+Box:
+   enclosing:  -23.31 -18.17 -10.98   23.26 17.47 11.78
+   sized:			      40.69 45.83 53.02
+   edge:        64.00
+Resolution:      1.00 Angstrom.
+Tree depth: 6
+Volume =  4.23% of box, grid points 11083
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(No solvent overlap)
+Placed Na+ in pep at (0.69, -5.17, -2.98).
+
+Done adding ions.
+> addions pep Cl- 2
+Cl- has a charge of 0.
+Adding the ions anyway.
+Adding 2 counter ions to "pep" using 1A grid
+Total solute charge:   0.00  Max atom radius:   1.98
+Grid extends from solute vdw + 2.36  to  8.34
+Box:
+   enclosing:  -24.20 -19.06 -11.88   24.15 18.36 12.67
+   sized:			      39.80 44.94 52.12
+   edge:        64.00
+Resolution:      1.00 Angstrom.
+Tree depth: 6
+Volume =  4.88% of box, grid points 12789
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(Replacing solvent molecule)
+Placed Cl- in pep at (-18.38, -11.03, -2.60).
+(Replacing solvent molecule)
+Placed Cl- in pep at (-2.82, 7.76, 4.12).
+
+Done adding ions.
+> addions pep Na+ 2
+Adding 2 counter ions to "pep" using 1A grid
+Total solute charge:  -2.00  Max atom radius:   2.36
+Grid extends from solute vdw + 1.47  to  7.83
+Box:
+   enclosing:  -26.21 -18.86 -11.36   23.64 17.84 12.16
+   sized:			      37.79 45.14 52.64
+   edge:        64.00
+Resolution:      1.00 Angstrom.
+Tree depth: 6
+Volume =  5.00% of box, grid points 13115
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(Replacing solvent molecule)
+Placed Na+ in pep at (16.39, 11.65, -2.63).
+(Replacing solvent molecule)
+Placed Na+ in pep at (6.94, -1.99, -5.62).
+
+Done adding ions.
+> saveamberparm pep solv.parm7 solv.rst7
+Checking Unit.
+
+/opt/homebrew/Caskroom/miniforge/base/envs/prime-amber/bin/teLeap: Note.
+Ignoring the warnings from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 40 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CALA	1
+	NALA	1
+  )
+ (no restraints)
+> quit
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 1; Notes = 2.

@@ -1,0 +1,9 @@
+corpus/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+uv.lock

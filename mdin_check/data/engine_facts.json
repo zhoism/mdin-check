@@ -1,0 +1,337 @@
+{
+ "_about": "Value domains and namelist handling observed by running pmemd 26 (CPU build) and sander (AmberTools) on probe inputs. Each entry is what the engine did, not what the manual says. tests/test_engine_facts.py re-runs every one when an engine is installed.",
+ "pmemd": {
+  "domains": {
+   "imin": [
+    0,
+    1
+   ],
+   "irest": [
+    0,
+    1
+   ],
+   "ntx": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+   ],
+   "ntxo": [
+    1,
+    2
+   ],
+   "nmropt": [
+    0,
+    1
+   ],
+   "ntt": [
+    0,
+    1,
+    2,
+    3,
+    11
+   ],
+   "ntc": [
+    1,
+    2,
+    3
+   ],
+   "ntf": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "ntb": [
+    0,
+    1,
+    2
+   ],
+   "igb": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7,
+    8
+   ],
+   "ioutfm": [
+    0,
+    1
+   ],
+   "iwrap": [
+    0,
+    1
+   ],
+   "ntmin": [
+    0,
+    1,
+    2
+   ],
+   "ifqnt": [
+    0
+   ],
+   "idecomp": [
+    0
+   ]
+  },
+  "nonnegative": [
+   "ntpr",
+   "ntwx",
+   "ntwe",
+   "ntave",
+   "ntwprt"
+  ],
+  "positive": [
+   "cut"
+  ],
+  "reads": {
+   "cntrl": null,
+   "ewald": null,
+   "wt": "nmropt",
+   "extpot": "iextpot",
+   "pol_gauss": "ipgm"
+  },
+  "rejects_namelists": [
+   "debugf"
+  ],
+  "wt_types": [
+   "ALL",
+   "ANGAVE",
+   "ANGAVI",
+   "ANGLE",
+   "ATTRACT",
+   "BOND",
+   "DISAVE",
+   "DISAVI",
+   "DUMPFREQ",
+   "ELEC",
+   "END",
+   "HB",
+   "IMPROP",
+   "INTERN",
+   "NB",
+   "NOESY",
+   "NSTEP0",
+   "REPULSE",
+   "REST",
+   "RESTL",
+   "RESTS",
+   "RSTAR",
+   "SHIFTS",
+   "SHORT",
+   "SOFTR",
+   "STPMLT",
+   "TAUTP",
+   "TEMP0",
+   "TORAVE",
+   "TORAVI",
+   "TORSION",
+   "VDW"
+  ],
+  "title_optional": true,
+  "mask_max_length": 1024
+ },
+ "sander": {
+  "domains": {
+   "irest": [
+    0,
+    1
+   ],
+   "ntxo": [
+    1,
+    2
+   ],
+   "ntt": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "ntc": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "ntf": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "ntp": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "igb": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7,
+    8,
+    10
+   ],
+   "ioutfm": [
+    0,
+    1
+   ]
+  },
+  "nonnegative": [
+   "ntwx"
+  ],
+  "positive": [],
+  "reads": {
+   "cntrl": null,
+   "ewald": null,
+   "wt": "nmropt",
+   "qmmm": "ifqnt",
+   "pb": "ipb",
+   "rism": "irism",
+   "amoeba": "iamoeba",
+   "extpot": "iextpot",
+   "debugf": null,
+   "dprc": null,
+   "lmod": null,
+   "sebomd": null,
+   "music": null
+  },
+  "rejects_namelists": [],
+  "wt_types": [
+   "ALL",
+   "ANGAVE",
+   "ANGAVI",
+   "ANGLE",
+   "ATTRACT",
+   "BOND",
+   "CUT",
+   "DISAVE",
+   "DISAVI",
+   "DUMPFREQ",
+   "ELEC",
+   "END",
+   "HB",
+   "IMPROP",
+   "INTERN",
+   "NB",
+   "NOESY",
+   "NSTEP0",
+   "REPULSE",
+   "REST",
+   "RESTL",
+   "RESTS",
+   "RSTAR",
+   "SHIFTS",
+   "SHORT",
+   "SOFTR",
+   "STPMLT",
+   "TAUTP",
+   "TEMP0",
+   "TGTRMSD",
+   "TORAVE",
+   "TORAVI",
+   "TORSION",
+   "VDW"
+  ],
+  "title_optional": false,
+  "mask_max_length": 256,
+  "barostat_when_ntp": [
+   1,
+   2
+  ]
+ },
+ "amber_namelists": [
+  "abmd",
+  "adf",
+  "adqmmm",
+  "align",
+  "amoeba",
+  "ani",
+  "asm",
+  "bbmd",
+  "cntrl",
+  "colvar",
+  "configs",
+  "csa",
+  "debugf",
+  "decomp",
+  "dftbplus",
+  "dipoles",
+  "dlfind",
+  "dprc",
+  "emap",
+  "emil_cntrl",
+  "ene",
+  "ewald",
+  "extpot",
+  "fb",
+  "files",
+  "fitq",
+  "gau",
+  "gb",
+  "gem",
+  "general",
+  "gms",
+  "inp",
+  "ipolq",
+  "lmod",
+  "mrcc",
+  "multirem",
+  "music",
+  "noeexp",
+  "nw",
+  "orc",
+  "param",
+  "pb",
+  "pcshf",
+  "pcshift",
+  "phmdin",
+  "phmdparm",
+  "phmdrst",
+  "phmdstrt",
+  "pmd",
+  "pol_gauss",
+  "pptd",
+  "qc",
+  "qm_inp",
+  "qmmm",
+  "quick",
+  "reaxff",
+  "rism",
+  "rst",
+  "rule",
+  "sebomd",
+  "shf",
+  "smd",
+  "stsm",
+  "tc",
+  "tgt",
+  "vsolv",
+  "wt",
+  "xray",
+  "xtb"
+ ]
+}
