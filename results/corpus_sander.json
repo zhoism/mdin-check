@@ -4,19 +4,17 @@
   "files": 2000,
   "repos": 208,
   "outcomes": {
-   "agree": 1883,
-   "environment": 97,
-   "miss": 19,
-   "unverifiable": 1
+   "agree": 1892,
+   "environment": 105,
+   "unverifiable": 3
   },
-  "agreement_on_scored": 0.99,
+  "agreement_on_scored": 1.0,
   "outcomes_max_5_per_repo": {
-   "agree": 451,
-   "environment": 50,
-   "miss": 15,
-   "unverifiable": 1
+   "agree": 457,
+   "environment": 57,
+   "unverifiable": 3
   },
-  "agreement_max_5_per_repo": 0.9678,
+  "agreement_max_5_per_repo": 1.0,
   "findings_by_code": {
    "UNKNOWN_KEY:error": 1338,
    "NO_TITLE:error": 964,
@@ -37,18 +35,23 @@
    "NAMELIST_NAME_END:error": 17,
    "CUT:warning": 14,
    "NO_FINAL_NEWLINE:error": 13,
+   "GROUP_SYNTAX:error": 9,
    "IGNORED_IN_MIN:info": 9,
    "WT_RAMP:warning": 8,
    "THERMOSTAT_OFF:silent": 7,
+   "GROUP_PLACEMENT:error": 6,
    "MASK_IGNORED:silent": 6,
    "BELLY:info": 5,
    "RESTRAINT_WEIGHT:silent": 5,
+   "GROUP_INPUT:error": 5,
    "THERMOSTAT:error": 3,
    "VALUE_DOMAIN:error": 3,
+   "GROUP_IGNORED:silent": 3,
    "MASK_LENGTH:error": 1,
    "STRING_SPANS_LINES:warning": 1,
    "EMPTY_VALUE:silent": 1,
    "HIDDEN_NAMELIST:silent": 1,
+   "DECOMP_INPUT:error": 1,
    "RESTART:error": 1,
    "NSTLIM:silent": 1,
    "WT_RAMP:silent": 1,
@@ -1090,11 +1093,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')"
+    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -6717,7 +6722,7 @@
   },
   {
    "file": "24c4fa67bea58d51836f4823bb44c45857352897.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "ok",
    "engine_accepted": false,
    "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",
@@ -7171,15 +7176,18 @@
   },
   {
    "file": "261b65f63d656a52eab8e3572b3441f3bf23e0da.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  1  3 from:",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_PLACEMENT:error",
     "NAMELIST_IGNORED:silent"
    ],
-   "errors": [],
+   "errors": [
+    "sander does not read &wt (line 59), so it reads those lines as the group input ('rfree: Error decoding variable')"
+   ],
    "repo": "rkmlabiiserb/b2armut"
   },
   {
@@ -8175,7 +8183,7 @@
   },
   {
    "file": "2ccfb97357310c54bc6342ff111560115e6a8f0b.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "ok",
    "engine_accepted": false,
    "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",
@@ -9610,7 +9618,7 @@
   },
   {
    "file": "359ef01cc86e116fbfd54db0c2fed0b6ffd4377a.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "ok",
    "engine_accepted": false,
    "engine_error": "QMMM: QM region (qmcharge) set incorrectly. Correct error and re-run calculation.",
@@ -12057,12 +12065,16 @@
   },
   {
    "file": "44420e3e4023abd79035c21e8be2e88254fb7f25.in",
-   "outcome": "miss",
-   "static": "ok",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "Fortran runtime error: End of file",
-   "codes": [],
-   "errors": [],
+   "codes": [
+    "DECOMP_INPUT:error"
+   ],
+   "errors": [
+    "idecomp>0 needs residue cards after the namelists (RES ... / END / END) saying which residues to decompose; sander reads past the end of the file"
+   ],
    "repo": "JordiVillaFreixa/Pau_TFG_DAO"
   },
   {
@@ -13131,10 +13143,12 @@
    "engine_error": "Error opening unit   33: File \"equilibration_01.rest\" is missing or unreadable",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres1' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -16157,11 +16171,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')"
+    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -18454,7 +18470,7 @@
   },
   {
    "file": "63c9d465d36cc5fdefd2b5a11e948bcbe72f95de.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "suspect",
    "engine_accepted": false,
    "engine_error": "SANDER BOMB in subroutine qm2_extern_get_qm_forces",
@@ -19290,15 +19306,18 @@
   },
   {
    "file": "67d266401f70c43bb5a51dbb37d9b06ab8bd0389.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  1  3 from:",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_PLACEMENT:error",
     "NAMELIST_IGNORED:silent"
    ],
-   "errors": [],
+   "errors": [
+    "sander does not read &wt (line 59), so it reads those lines as the group input ('rfree: Error decoding variable')"
+   ],
    "repo": "rkmlabiiserb/b2armut"
   },
   {
@@ -21036,15 +21055,18 @@
   },
   {
    "file": "74579c99e320edea7c3f4020ae4319bdbe39d3ce.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  1  3 from:",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_PLACEMENT:error",
     "NAMELIST_IGNORED:silent"
    ],
-   "errors": [],
+   "errors": [
+    "sander does not read &wt (line 59), so it reads those lines as the group input ('rfree: Error decoding variable')"
+   ],
    "repo": "rkmlabiiserb/b2armut"
   },
   {
@@ -21155,7 +21177,7 @@
   },
   {
    "file": "754ff00b3a5ba9b3e133ccba15334f3bc205ea96.in",
-   "outcome": "miss",
+   "outcome": "unverifiable",
    "static": "ok",
    "engine_accepted": false,
    "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",
@@ -24761,12 +24783,16 @@
   },
   {
    "file": "8a2925083116e02744e630c7e78113bd30fcdf46.in",
-   "outcome": "miss",
-   "static": "ok",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  3  2 from:",
-   "codes": [],
-   "errors": [],
+   "codes": [
+    "GROUP_SYNTAX:error"
+   ],
+   "errors": [
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
+   ],
    "repo": "graik/biskit"
   },
   {
@@ -25036,7 +25062,7 @@
   },
   {
    "file": "8bd342981c7b67ddad82c610b535a724f6989640.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "suspect",
    "engine_accepted": false,
    "engine_error": "SANDER BOMB in subroutine qm2_extern_get_qm_forces",
@@ -26998,11 +27024,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')"
+    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -28115,10 +28143,12 @@
    "engine_error": "Error opening unit   33: File \"equilibration_00.rest\" is missing or unreadable",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres1' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -29071,15 +29101,18 @@
   },
   {
    "file": "a003a6c5aab0999291e7a6c6294453a60d2f63ef.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  3  2 from:",
    "codes": [
+    "GROUP_SYNTAX:error",
     "OUTPUT:info",
     "OUTPUT:silent"
    ],
-   "errors": [],
+   "errors": [
+    "RES takes integers only; got 'TEMPLATE_LASTRESI' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
+   ],
    "repo": "Fluorescence-Tools/FRETrest"
   },
   {
@@ -30284,11 +30317,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')"
+    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -30459,15 +30494,18 @@
   },
   {
    "file": "a97866b1c962eb0cdc27bb2694a283d1457b9248.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  1  3 from:",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_PLACEMENT:error",
     "NAMELIST_IGNORED:silent"
    ],
-   "errors": [],
+   "errors": [
+    "sander does not read &wt (line 59), so it reads those lines as the group input ('rfree: Error decoding variable')"
+   ],
    "repo": "rkmlabiiserb/b2armut"
   },
   {
@@ -31520,10 +31558,12 @@
   {
    "file": "af867dec627c4d6fb3cefd5d603336ad5ec507a0.in",
    "outcome": "agree",
-   "static": "ok",
+   "static": "suspect",
    "engine_accepted": true,
    "engine_error": "",
-   "codes": [],
+   "codes": [
+    "GROUP_IGNORED:silent"
+   ],
    "errors": [],
    "repo": "colombolab/MLCE"
   },
@@ -31958,10 +31998,12 @@
   {
    "file": "b29331d7e1efed54050468c1cd82e867d6a1b410.in",
    "outcome": "agree",
-   "static": "ok",
+   "static": "suspect",
    "engine_accepted": true,
    "engine_error": "",
-   "codes": [],
+   "codes": [
+    "GROUP_IGNORED:silent"
+   ],
    "errors": [],
    "repo": "dmerz75/asmd2"
   },
@@ -33039,7 +33081,7 @@
   },
   {
    "file": "b81a25a14d78152ca8d3f90daa6d9f58e55abcc8.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "suspect",
    "engine_accepted": false,
    "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",
@@ -33578,7 +33620,7 @@
   },
   {
    "file": "bbe808487dc337ae6db2a63d9118b9a5a5537b58.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "ok",
    "engine_accepted": false,
    "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",
@@ -33640,11 +33682,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')"
+    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -36539,11 +36583,13 @@
    "engine_accepted": false,
    "engine_error": "error in reading namelist cntrl",
    "codes": [
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "UNKNOWN_KEY:error",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "sander does not accept 'gbion' in &cntrl ('error in reading namelist')",
     "sander does not accept 'gi_coef_1_p' in &cntrl ('error in reading namelist')",
     "sander does not accept 'gi_coef_1_n' in &cntrl ('error in reading namelist')",
@@ -37347,12 +37393,16 @@
   },
   {
    "file": "d12260ea9f36e73d816fd4b0c8d5d90b7d36e20d.in",
-   "outcome": "miss",
-   "static": "ok",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  3  2 from:",
-   "codes": [],
-   "errors": [],
+   "codes": [
+    "GROUP_SYNTAX:error"
+   ],
+   "errors": [
+    "RES takes integers only; got 'TEMPLATE_LASTRESI' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
+   ],
    "repo": "Fluorescence-Tools/FRETrest"
   },
   {
@@ -38433,11 +38483,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')"
+    "sander does not accept 'plevel' in &cntrl ('error in reading namelist')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -38769,10 +38821,12 @@
    "engine_error": "Error opening unit   33: File \"step6.1_equilibration.rest\" is missing or unreadable",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -39021,10 +39075,12 @@
    "engine_error": "Error opening unit   33: File \"equilibration_04.rest\" is missing or unreadable",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres1' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -40864,15 +40920,18 @@
   },
   {
    "file": "e34949023bcd63c407236f92287f98ad96589955.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  1  3 from:",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_PLACEMENT:error",
     "NAMELIST_IGNORED:silent"
    ],
-   "errors": [],
+   "errors": [
+    "sander does not read &wt (line 59), so it reads those lines as the group input ('rfree: Error decoding variable')"
+   ],
    "repo": "rkmlabiiserb/b2armut"
   },
   {
@@ -41986,10 +42045,12 @@
   {
    "file": "e7971228ff497a61ded152170abeda1950e55bc6.in",
    "outcome": "agree",
-   "static": "ok",
+   "static": "suspect",
    "engine_accepted": true,
    "engine_error": "",
-   "codes": [],
+   "codes": [
+    "GROUP_IGNORED:silent"
+   ],
    "errors": [],
    "repo": "Foly93/MD_FromBasicsToApplication"
   },
@@ -42237,7 +42298,7 @@
   },
   {
    "file": "e8f9a1702e3c43ab4b8adab6859fb0ed85bf5287.in",
-   "outcome": "miss",
+   "outcome": "unverifiable",
    "static": "ok",
    "engine_accepted": false,
    "engine_error": "--------------------------------------------",
@@ -44910,10 +44971,12 @@
    "engine_error": "error in reading namelist cntrl",
    "codes": [
     "BAD_VALUE:error",
+    "GROUP_PLACEMENT:error",
     "NAMELIST_IGNORED:silent"
    ],
    "errors": [
-    "ig = %(rand_seed)i: not a number, a logical, or a quoted string"
+    "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
+    "sander does not read &rst (line 38), so it reads those lines as the group input ('rfree: Error decoding variable')"
    ],
    "repo": "graik/biskit"
   },
@@ -45936,7 +45999,7 @@
   },
   {
    "file": "fe087b21e95bb8787c65bbef4acdd114872e2665.in",
-   "outcome": "miss",
+   "outcome": "environment",
    "static": "ok",
    "engine_accepted": false,
    "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",

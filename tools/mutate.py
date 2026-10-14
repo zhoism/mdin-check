@@ -40,6 +40,15 @@ MUTANTS = [
  ("mdin_check/rules.py", 'if known is not None and e.key not in known:', 'if known is not None and e.key not in known and len(e.key) > 4:'),
  ("mdin_check/rules.py", 'and _numeric_key(c, nl.name, e.key) and _looks_number(v.value):', 'and False:'),
  ("mdin_check/rules.py", 'len(e.values) > 1 and e.key not in arrays', 'len(e.values) > 2 and e.key not in arrays'),
+ ("mdin_check/group.py", 'if title.rstrip() == "END":', 'if title.strip() == "END":'),
+ ("mdin_check/group.py", 'if max_pairs and len(pairs) > max_pairs:', 'if max_pairs and len(pairs) > max_pairs + 1:'),
+ ("mdin_check/group.py", 'if not all(re.fullmatch(r"-?\d+", t) for t in rest):', 'if False:'),
+ ("mdin_check/group.py", 'lo, hi = abs(a), b', 'lo, hi = abs(a), b + 1'),
+ ("mdin_check/rules.py", 'if (_num(c.v(key, 0)) or 0) > 0 and ntp > 0:', 'if (_num(c.v(key, 0)) or 0) > 0 and ntp > 1:'),
+ ("mdin_check/rules.py", 'if _num(c.v(key, 0)) == 1 and ntb > 0 and igb == 0:', 'if _num(c.v(key, 0)) == 1 and ntb > 1 and igb == 0:'),
+ ("mdin_check/rules.py", 'if nl.line > first and (c.engine == "pmemd" or read):', 'if nl.line > first and read:'),
+ ("mdin_check/rules.py", 'if c.engine == "sander" and nl.line < first and not read', 'if c.engine == "sander" and nl.line < first and read'),
+ ("mdin_check/rules.py", '(_num(c.v("idecomp", 0)) or 0) > 0 and not groupmod', '(_num(c.v("idecomp", 0)) or 0) > 1 and not groupmod'),
 ]
 for path, a, b in MUTANTS:
     p = Path(path); orig = p.read_text()

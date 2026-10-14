@@ -32,9 +32,12 @@ class Case:
     system: str = "solv"              # solv | vac
     crd: str = "solv.rst7"
     severity: dict = field(default_factory=dict)      # code -> required severity
+    group_atoms: list | None = None   # atoms per group, as the engine prints them ("Number of atoms in this group")
 
 
 WT_END = "&wt type='END' /\n"
+WT_UNREAD = "&wt type='TEMP0', istep1=0, istep2=2, value1=0.0, value2=300.0 /\n&wt type='END' /\n"
+G1 = "hold\n5.0\nRES 1 10\nEND\nEND\n"
 V = "solv_vel.rst7"
 
 CASES = [
@@ -200,5 +203,62 @@ CASES = [
          ["MASK_SYNTAX"], engines=("pmemd",)),
     Case("mask name of 4 characters", mdin({"ntr": 1, "restraint_wt": 2.0, "restraintmask": "':ABCD'"}), "accept",
          ["MASK_EMPTY"], engines=("pmemd",)),
+    Case("icnstph with ntp, pmemd", mdin({"icnstph": 2, "ntp": 1, "ntb": 2}), "reject", ["CONSTANT_PH"],
+         engines=("pmemd",)),
+    Case("icnste with ntp, pmemd", mdin({"icnste": 2, "ntp": 1, "ntb": 2}), "reject", ["CONSTANT_PH"],
+         engines=("pmemd",)),
+    Case("icnste=1 in explicit solvent, pmemd", mdin({"icnste": 1}), "reject", ["CONSTANT_PH"], engines=("pmemd",)),
+    Case("icnstph=1 in explicit solvent, pmemd", mdin({"icnstph": 1}), "reject", ["CONSTANT_PH"], engines=("pmemd",)),
+    # old-style GROUP input (ntr=1 with no restraintmask, ibelly=1 with no bellymask)
+    Case("group ok", mdin({"ntr": 1}) + G1, "accept", group_atoms=[155]),
+    Case("group two groups", mdin({"ntr": 1}) + "a\n5.0\nRES 1 5\nEND\nb\n2.0\nRES 6 10\nEND\nEND\n", "accept",
+         group_atoms=[74, 81]),
+    Case("group ATOM", mdin({"ntr": 1}) + "a\n5.0\nATOM 1 50\nEND\nEND\n", "accept", group_atoms=[50]),
+    Case("group pairs and a lone number", mdin({"ntr": 1}) + "a\n5.0\nRES 1 6 11\nEND\nEND\n", "accept",
+         group_atoms=[90]),
+    Case("group past the end", mdin({"ntr": 1}) + "a\n5.0\nRES 1 99999\nEND\nEND\n", "accept", ["GROUP_RANGE"],
+         group_atoms=[6104]),
+    Case("group reversed", mdin({"ntr": 1}) + "a\n5.0\nRES 10 1\nEND\nEND\n", "accept", ["GROUP_RANGE", "GROUP_EMPTY"],
+         group_atoms=[0]),
+    Case("group unknown card word", mdin({"ntr": 1}) + "a\n5.0\nRANGE 1 10\nEND\nEND\n", "accept", ["GROUP_CARD"],
+         group_atoms=[155]),
+    Case("group eight ranges, pmemd", mdin({"ntr": 1}) + "a\n5.0\nRES " + " ".join(f"{i} {i}" for i in range(1, 9))
+         + "\nEND\nEND\n", "accept", ["GROUP_CARD"], engines=("pmemd",), group_atoms=[113]),
+    Case("group placeholder", mdin({"ntr": 1}) + "a\n5.0\nRES 1 %(lenres)i\nEND\nEND\n", "reject", ["GROUP_SYNTAX"]),
+    Case("group comment on a card", mdin({"ntr": 1}) + "a\n5.0\nRES 1 10 ! note\nEND\nEND\n", "reject",
+         ["GROUP_SYNTAX"]),
+    Case("group weight not a number", mdin({"ntr": 1}) + "a\nWT\nRES 1 10\nEND\nEND\n", "reject", ["GROUP_SYNTAX"]),
+    Case("group no weight line", mdin({"ntr": 1}) + "a\nRES 1 10\nEND\nEND\n", "reject", ["GROUP_SYNTAX"]),
+    Case("group lower case", mdin({"ntr": 1}) + "a\n5.0\nres 1 10\nend\nend\n", "reject", ["GROUP_SYNTAX"]),
+    Case("group no final END", mdin({"ntr": 1}) + "a\n5.0\nRES 1 10\nEND\n", "reject", ["GROUP_SYNTAX"]),
+    Case("group final END indented", mdin({"ntr": 1}) + "a\n5.0\nRES 1 10\nEND\n END\n", "reject", ["GROUP_SYNTAX"]),
+    Case("group card indented", mdin({"ntr": 1}) + "a\n5.0\n RES 1 10\n END\nEND\n", "accept", group_atoms=[155]),
+    Case("group FIND without SEARCH", mdin({"ntr": 1}) + "a\n5.0\nFIND\nCA * * *\nRES 1 10\nEND\nEND\n", "reject",
+         ["GROUP_SYNTAX"]),
+    Case("group FIND", mdin({"ntr": 1}) + "a\n5.0\nFIND\nCA * * *\nSEARCH\nRES 1 10\nEND\nEND\n", "accept"),
+    Case("group belly", mdin({"ibelly": 1, "ntt": 1}, drop=("gamma_ln",)) + "move\nRES 1 10\nEND\nEND\n", "accept",
+         group_atoms=[155]),
+    Case("group restraint then belly", mdin({"ntr": 1, "ibelly": 1, "ntt": 1}, drop=("gamma_ln",))
+         + "hold\n5.0\nRES 1 5\nEND\nEND\nmove\nRES 1 10\nEND\nEND\n", "accept"),
+    Case("group belly then restraint", mdin({"ntr": 1, "ibelly": 1, "ntt": 1}, drop=("gamma_ln",))
+         + "move\nRES 1 10\nEND\nEND\nhold\n5.0\nRES 1 5\nEND\nEND\n", "reject", ["GROUP_SYNTAX"]),
+    Case("group with ntr=0", mdin() + G1, "accept", ["GROUP_IGNORED"]),
+    Case("group with a restraintmask", mdin({"ntr": 1, "restraint_wt": 2.0, "restraintmask": "':1'"}) + G1, "accept",
+         ["GROUP_IGNORED"]),
+    Case("group before an unread &wt, sander", mdin({"ntr": 1}, after=WT_UNREAD) + G1, "reject", ["GROUP_PLACEMENT"],
+         engines=("sander",)),
+    Case("group before an unread &wt, pmemd", mdin({"ntr": 1}, after=WT_UNREAD) + G1, "accept", engines=("pmemd",)),
+    Case("group before a read &wt", mdin({"ntr": 1, "nmropt": 1}, after=WT_UNREAD) + G1, "accept"),
+    Case("group before a typo namelist, sander", mdin({"ntr": 1}, after="&ewlad\n skinnb=1.0,\n/\n") + G1, "reject",
+         ["GROUP_PLACEMENT"], engines=("sander",)),
+    Case("group then &ewald", mdin({"ntr": 1}) + G1 + "&ewald\n skinnb=1.0,\n/\n", "reject", ["GROUP_PLACEMENT"]),
+    Case("group then a typo namelist, pmemd", mdin({"ntr": 1}) + G1 + "&ewlad\n skinnb=1.0,\n/\n", "reject",
+         ["GROUP_PLACEMENT"], engines=("pmemd",)),
+    Case("group then a typo namelist, sander", mdin({"ntr": 1}) + G1 + "&ewlad\n skinnb=1.0,\n/\n", "accept",
+         engines=("sander",)),
+    Case("group then text", mdin({"ntr": 1}) + G1 + "some note\n", "accept"),
+    Case("idecomp without residue cards, sander", mdin({"idecomp": 1}), "reject", ["DECOMP_INPUT"], engines=("sander",)),
+    Case("idecomp with residue cards, sander", mdin({"idecomp": 1}) + "RES 1 10\nEND\nEND\n", "accept",
+         engines=("sander",)),
     Case("mask ok", mdin({"ntr": 1, "restraint_wt": 2.0, "restraintmask": "':1-10@CA'"}), "accept"),
 ]

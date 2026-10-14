@@ -5,18 +5,16 @@
   "repos": 208,
   "outcomes": {
    "environment": 1082,
-   "agree": 912,
-   "miss": 4,
+   "agree": 916,
    "unverifiable": 2
   },
-  "agreement_on_scored": 0.9956,
+  "agreement_on_scored": 1.0,
   "outcomes_max_5_per_repo": {
    "environment": 82,
-   "agree": 430,
-   "miss": 3,
+   "agree": 433,
    "unverifiable": 2
   },
-  "agreement_max_5_per_repo": 0.9931,
+  "agreement_max_5_per_repo": 1.0,
   "findings_by_code": {
    "NO_TITLE:info": 964,
    "SHAKE_MISMATCH:info": 895,
@@ -37,6 +35,7 @@
    "DUPLICATE_KEY:silent": 17,
    "CUT:warning": 14,
    "NO_FINAL_NEWLINE:error": 14,
+   "GROUP_SYNTAX:error": 10,
    "PRESSURE:error": 10,
    "IGNORED_IN_MIN:info": 9,
    "WT_RAMP:warning": 8,
@@ -45,9 +44,12 @@
    "NTX_LEGACY:warning": 6,
    "BELLY:info": 5,
    "RESTRAINT_WEIGHT:silent": 5,
+   "GROUP_INPUT:error": 5,
    "THERMOSTAT:error": 3,
    "NAMELIST_REJECTED:error": 3,
+   "GROUP_IGNORED:silent": 3,
    "WT_TYPE:error": 1,
+   "CONSTANT_PH:error": 1,
    "STRING_SPANS_LINES:warning": 1,
    "EMPTY_VALUE:silent": 1,
    "HIDDEN_NAMELIST:silent": 1,
@@ -573,11 +575,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')"
+    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -3614,14 +3618,17 @@
   },
   {
    "file": "1fdf68b03e8897a05e7dfb9ee15f75121add75a9.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "| ERROR:   Currently, constant pH simulations cannot be executed at constant pressure!",
    "codes": [
+    "CONSTANT_PH:error",
     "NAMELIST_UNKNOWN:silent"
    ],
-   "errors": [],
+   "errors": [
+    "icnstph>0 with ntp>0: pmemd cannot run constant pH at constant pressure"
+   ],
    "repo": "pgbarletta/cph_obp"
   },
   {
@@ -8239,10 +8246,12 @@
    "engine_error": "Warning: Error opening \"Old\" file from subroutine OPNMRG",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres1' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -10171,11 +10180,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')"
+    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -15409,12 +15420,16 @@
   },
   {
    "file": "8a2925083116e02744e630c7e78113bd30fcdf46.in",
-   "outcome": "miss",
-   "static": "ok",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  3  2 from:",
-   "codes": [],
-   "errors": [],
+   "codes": [
+    "GROUP_SYNTAX:error"
+   ],
+   "errors": [
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
+   ],
    "repo": "graik/biskit"
   },
   {
@@ -16583,11 +16598,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')"
+    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -17326,10 +17343,12 @@
    "engine_error": "Warning: Error opening \"Old\" file from subroutine OPNMRG",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres1' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -18053,15 +18072,18 @@
   },
   {
    "file": "a003a6c5aab0999291e7a6c6294453a60d2f63ef.in",
-   "outcome": "miss",
-   "static": "suspect",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  3  2 from:",
    "codes": [
+    "GROUP_SYNTAX:error",
     "OUTPUT:info",
     "OUTPUT:silent"
    ],
-   "errors": [],
+   "errors": [
+    "RES takes integers only; got 'TEMPLATE_LASTRESI' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
+   ],
    "repo": "Fluorescence-Tools/FRETrest"
   },
   {
@@ -18747,11 +18769,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')"
+    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -19589,10 +19613,12 @@
   {
    "file": "af867dec627c4d6fb3cefd5d603336ad5ec507a0.in",
    "outcome": "agree",
-   "static": "ok",
+   "static": "suspect",
    "engine_accepted": true,
    "engine_error": "",
-   "codes": [],
+   "codes": [
+    "GROUP_IGNORED:silent"
+   ],
    "errors": [],
    "repo": "colombolab/MLCE"
   },
@@ -19922,10 +19948,12 @@
   {
    "file": "b29331d7e1efed54050468c1cd82e867d6a1b410.in",
    "outcome": "agree",
-   "static": "ok",
+   "static": "suspect",
    "engine_accepted": true,
    "engine_error": "",
-   "codes": [],
+   "codes": [
+    "GROUP_IGNORED:silent"
+   ],
    "errors": [],
    "repo": "dmerz75/asmd2"
   },
@@ -20980,11 +21008,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')"
+    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -22796,10 +22826,12 @@
    "engine_accepted": false,
    "engine_error": "Warning: Error opening \"Old\" file from subroutine OPNMRG",
    "codes": [
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'RESTRAIN' in &end has no 'name =' before it",
     "value 'CORE' in &end has no 'name =' before it",
     "value '0.1' in &end has no 'name =' before it",
@@ -23219,12 +23251,16 @@
   },
   {
    "file": "d12260ea9f36e73d816fd4b0c8d5d90b7d36e20d.in",
-   "outcome": "miss",
-   "static": "ok",
+   "outcome": "agree",
+   "static": "reject",
    "engine_accepted": false,
    "engine_error": "rfree: Error decoding variable  3  2 from:",
-   "codes": [],
-   "errors": [],
+   "codes": [
+    "GROUP_SYNTAX:error"
+   ],
+   "errors": [
+    "RES takes integers only; got 'TEMPLATE_LASTRESI' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
+   ],
    "repo": "Fluorescence-Tools/FRETrest"
   },
   {
@@ -23852,11 +23888,13 @@
    "codes": [
     "BAD_VALUE:error",
     "DUPLICATE_KEY:silent",
+    "GROUP_SYNTAX:error",
     "UNKNOWN_KEY:error"
    ],
    "errors": [
     "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
-    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')"
+    "pmemd does not accept 'plevel' in &cntrl ('Cannot match namelist object name')",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },
@@ -24103,10 +24141,12 @@
    "engine_error": "Warning: Error opening \"Old\" file from subroutine OPNMRG",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -24259,10 +24299,12 @@
    "engine_error": "Warning: Error opening \"Old\" file from subroutine OPNMRG",
    "codes": [
     "FIXED_SEED:warning",
+    "GROUP_INPUT:error",
     "NAMELIST_UNKNOWN:silent",
     "VALUE_WITHOUT_KEY:error"
    ],
    "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
     "value 'Protein' in &end has no 'name =' before it",
     "value 'posres1' in &end has no 'name =' before it",
     "value '10.0' in &end has no 'name =' before it",
@@ -26093,6 +26135,7 @@
    "engine_accepted": false,
    "engine_error": "Fortran runtime error: Cannot match namelist object name dec_verbose",
    "codes": [
+    "GROUP_IGNORED:silent",
     "UNKNOWN_KEY:error",
     "VALUE_DOMAIN:error"
    ],
@@ -27804,10 +27847,12 @@
    "engine_error": "Fortran runtime error: Cannot match namelist object name %",
    "codes": [
     "BAD_VALUE:error",
+    "GROUP_SYNTAX:error",
     "NAMELIST_IGNORED:silent"
    ],
    "errors": [
-    "ig = %(rand_seed)i: not a number, a logical, or a quoted string"
+    "ig = %(rand_seed)i: not a number, a logical, or a quoted string",
+    "RES takes integers only; got '%(lenres)i' ('rfree: Error decoding variable'). A placeholder left in a template fails this way"
    ],
    "repo": "graik/biskit"
   },

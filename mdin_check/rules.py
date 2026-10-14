@@ -16,6 +16,7 @@ import json
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
+from . import group as groupmod
 from . import mask as maskmod
 from .namelist import Mdin, Namelist, parse
 from .topology import Coordinates, Topology
@@ -328,6 +329,15 @@ def _cntrl(c: _Ctx) -> None:
     if allowed and ntp > 0 and c.has("barostat") and c.v("barostat") not in allowed:
         c.add("VALUE_DOMAIN", "error", f"with ntp>0, {c.engine} accepts barostat = {', '.join(map(str, allowed))}; "
               f"got {c.v('barostat')}", c.line("barostat"), "cntrl", "barostat")
+    if c.engine == "pmemd":
+        for key, what in (("icnstph", "constant pH"), ("icnste", "constant redox potential")):
+            if (_num(c.v(key, 0)) or 0) > 0 and ntp > 0:
+                c.add("CONSTANT_PH", "error", f"{key}>0 with ntp>0: pmemd cannot run {what} at constant pressure",
+                      c.line(key), "cntrl", key, fix="ntp=0 (constant volume) for the constant pH stage")
+        for key, what in (("icnstph", "constant pH"), ("icnste", "constant redox potential")):
+            if _num(c.v(key, 0)) == 1 and ntb > 0 and igb == 0:
+                c.add("CONSTANT_PH", "error", f"{key}=1 is implicit-solvent {what}; in explicit solvent pmemd "
+                      f"needs {key}=2", c.line(key), "cntrl", key, fix=f"{key}=2")
     if md_run and ntp > 0 and ntt == 0:
         c.add("NPT_NO_THERMOSTAT", "warning", "constant pressure (ntp>0) with no thermostat (ntt=0)",
               c.line("ntp"), "cntrl", "ntt")
@@ -416,19 +426,13 @@ def _cntrl(c: _Ctx) -> None:
     if c.has("bellymask") and ibelly == 0:
         c.add("MASK_IGNORED", "silent", "bellymask is set but ibelly=0, so it is ignored",
               c.line("bellymask"), "cntrl", "bellymask", fix="ibelly=1")
+    _groups(c, ntr, ibelly)
     if ntr == 1:
-        if not c.has("restraintmask") and not c.md.other_lines:
-            c.add("GROUP_INPUT", "error", "ntr=1 with no restraintmask and no group input after the namelists: "
-                  "the engine reads past the end of the file", c.line("ntr"), "cntrl", "ntr",
-                  fix="restraintmask=':1-100@CA' (your selection) with restraint_wt")
         if (_num(c.v("restraint_wt", 0.0)) or 0.0) <= 0 and c.has("restraintmask"):
             c.add("RESTRAINT_WEIGHT", "silent", "ntr=1 with restraint_wt=0" + ("" if c.has("restraint_wt") else
                   " (the default)") + ": the restraint has no force", c.line("ntr"), "cntrl", "restraint_wt",
                   fix="restraint_wt=10.0 (kcal/mol/Å²; your choice)")
     if ibelly == 1:
-        if not c.has("bellymask") and not c.md.other_lines:
-            c.add("GROUP_INPUT", "error", "ibelly=1 with no bellymask and no group input after the namelists",
-                  c.line("ibelly"), "cntrl", "ibelly")
         if c.has("bellymask"):
             c.add("BELLY", "info", "bellymask selects the atoms that MOVE; everything else is frozen",
                   c.line("bellymask"), "cntrl", "bellymask")
@@ -436,12 +440,85 @@ def _cntrl(c: _Ctx) -> None:
             c.add("BELLY", "error", "ibelly=1 with ntt=3 is not a valid option in pmemd", c.line("ibelly"),
                   "cntrl", "ibelly")
 
+    if c.engine == "sander" and (_num(c.v("idecomp", 0)) or 0) > 0 and not groupmod.lines_of(c.md.other_lines):
+        c.add("DECOMP_INPUT", "error", "idecomp>0 needs residue cards after the namelists (RES ... / END / END) "
+              "saying which residues to decompose; sander reads past the end of the file", c.line("idecomp"),
+              "cntrl", "idecomp", fix="add the RES cards, or idecomp=0")
+
     # minimization-only / MD-only settings
     if imin == 1:
         ignored = [k for k in ("dt", "nstlim", "ntt", "temp0", "tempi", "gamma_ln") if c.has(k)]
         if ignored:
             c.add("IGNORED_IN_MIN", "info", "imin=1 (minimization) ignores " + ", ".join(ignored), c.cntrl.line,
                   "cntrl")
+
+
+def _groups(c: _Ctx, ntr: int, ibelly: int) -> None:
+    """Old-style GROUP input after the namelists (mdin_check/group.py)."""
+    sections = []
+    if ntr == 1 and not c.has("restraintmask"):
+        sections.append("restraint")
+    if ibelly == 1 and not c.has("bellymask"):
+        sections.append("belly")
+    lines = groupmod.lines_of(c.md.other_lines)
+    if not sections:
+        if groupmod.looks_like_groups(lines):
+            why = ("restraintmask and bellymask are used instead" if ntr == 1 or ibelly == 1
+                   else "ntr=0 and ibelly=0")
+            c.add("GROUP_IGNORED", "silent", f"the group input after the namelists is ignored: {why}",
+                  lines[0][0], fix="remove it, or drop the mask / set ntr=1 to use it")
+        return
+    if not lines:
+        what = " and ".join(f"{'ntr' if s == 'restraint' else 'ibelly'}=1" for s in sections)
+        mask = " / ".join("restraintmask" if s == "restraint" else "bellymask" for s in sections)
+        c.add("GROUP_INPUT", "error", f"{what} with no {mask} and no group input after the namelists: the engine "
+              "reads past the end of the file", c.line("ntr" if "restraint" in sections else "ibelly"), "cntrl",
+              fix=f"{mask.split(' / ')[0]}='<your selection>'")
+        return
+    first = lines[0][0]
+    for nl in c.md.namelists:
+        read = _is_read(c, nl.name)
+        if nl.line > first and (c.engine == "pmemd" or read):
+            c.add("GROUP_PLACEMENT", "error", f"&{nl.name} (line {nl.line}) comes after the group input (line {first}); "
+                  f"{c.engine} reads the group input after the last namelist and reaches the end of the file",
+                  nl.line, nl.name, fix="put the group input at the end of the file")
+            return
+        if c.engine == "sander" and nl.line < first and not read and nl.end_line and nl.end_line >= c.cntrl.end_line:
+            c.add("GROUP_PLACEMENT", "error", f"sander does not read &{nl.name} (line {nl.line}), so it reads those lines "
+                  "as the group input ('rfree: Error decoding variable')", nl.line, nl.name,
+                  fix=f"remove &{nl.name}, or move it after the group input")
+            return
+    groups, probs = groupmod.parse(lines, sections, 7 if c.engine == "pmemd" else None)
+    for pr in probs:
+        c.add("GROUP_SYNTAX" if pr.severity == "error" else "GROUP_CARD", pr.severity, pr.message, pr.line)
+    if c.top is None or any(p.severity == "error" for p in probs):
+        return
+    for sec, gs in groups.items():
+        for g in gs:
+            sel = groupmod.select(g, c.top)
+            if sel is None:
+                continue
+            kinds: dict[str, int] = {}
+            for at in sel:
+                k = c.top.kind(c.top.atom_res[at])
+                kinds[k] = kinds.get(k, 0) + 1
+            res = sorted({c.top.atom_res[at] for at in sel})
+            c.masks.append({"key": f"group ({sec}) '{g.title}'", "mask": " | ".join(
+                f"{cd.kind} " + " ".join(f"{x}-{y}" for x, y in cd.pairs) for cd in g.cards), "atoms": len(sel),
+                "residues": len(res), "by_kind": kinds,
+                "first_residues": [f"{c.top.res_labels[r]}{r + 1}" for r in res[:8]]})
+            if not sel:
+                c.add("GROUP_EMPTY", "silent", f"{sec} group '{g.title}' selects 0 atoms in this topology", g.line)
+            for cd in g.cards:
+                limit = c.top.nres if cd.kind == "RES" else c.top.natom
+                for x, y in cd.pairs:
+                    if y < x:
+                        c.add("GROUP_RANGE", "silent", f"{cd.kind} {x} {y} is a reversed range and selects nothing",
+                              cd.line)
+                    elif y > limit:
+                        c.add("GROUP_RANGE", "silent", f"{cd.kind} {x} {y} runs past the end of the system "
+                              f"({limit} {'residues' if cd.kind == 'RES' else 'atoms'}); the engine stops at the end",
+                              cd.line)
 
 
 def _ewald_skin(c: _Ctx) -> float:

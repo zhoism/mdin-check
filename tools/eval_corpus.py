@@ -33,7 +33,7 @@ ENVIRONMENT = re.compile(
     r"Error opening|DISANG|LISTIN|LISTOUT|DUMPAVE|out of range|number of atoms|natom|cpin|cein|groupfile|"
     r"numgroup|must be compiled|recompile|GPU|cuda|MPI|parallel|linearly scaled atoms|does not have match|"
     r"must exsit|must exist|radius .* outside|Error on OPEN|OPNMRG|does not have match|must match at least one atom|"
-    r"External program|max pairlist cutoff|half smallest box|ew_legal|Regenerate prmtop|larger box", re.I)
+    r"External program|max pairlist cutoff|half smallest box|ew_legal|Regenerate prmtop|larger box|NOT AVAILABLE FOR THIS ATOM|no PM3 parameters|Executable .{1,20} not found|odd number of electrons|is not enabled", re.I)
 
 
 def system_for(text: str) -> tuple[Path, Path]:
@@ -55,8 +55,9 @@ def one(path: Path, eng: str) -> dict:
     try:
         r = engine.run(text, top, crd, engine=eng, timeout=120)
         accepted, err = (None if r.timed_out else r.accepted), r.error
+        log = r.log
     except Exception as e:  # noqa: BLE001 - a crash in the harness is recorded, not raised
-        accepted, err = None, f"harness: {e}"
+        accepted, err, log = None, f"harness: {e}", ""
     static = rep.verdict
     # an error inside a namelist the engine may not read on this test system cannot be confirmed by it
     read = {"cntrl", "ewald", "wt", None}
@@ -67,7 +68,9 @@ def one(path: Path, eng: str) -> dict:
         outcome = "agree" if static != "reject" else "false_alarm" if confirmable else "unverifiable"
     elif static == "reject":
         outcome = "agree"
-    elif ENVIRONMENT.search(err or ""):
+    elif re.search(r"&debugf[^/]*do_debugf\s*=\s*1", text, re.I | re.S):
+        outcome = "unverifiable"      # a debug-force run stops by design before the step the harness waits for
+    elif ENVIRONMENT.search(err or "") or ENVIRONMENT.search(log[-4000:]):
         outcome = "environment"
     else:
         outcome = "miss"

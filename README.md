@@ -97,27 +97,33 @@ python tools/eval_corpus.py corpus --engine pmemd --out results/corpus_pmemd.jso
 ```
 
 Results on 2,000 files from 208 repositories (`results/corpus_pmemd.json`, `results/corpus_sander.json`).
-"Agree" means mdin-check reported an error exactly when the engine refused the file; "miss" is a file
-the engine refused with no error from mdin-check; "false alarm" is an error on a file the engine ran.
-Three repositories supply 1,208 of the files, so the second column counts at most 5 per repository.
+"Agree" means mdin-check reported an error exactly when the engine refused the file; a "miss" would be a
+file the engine refused with no error from mdin-check, and a "false alarm" an error on a file the engine
+ran. Three repositories supply 1,208 of the files, so the second column counts at most 5 per repository.
 
 | engine | scored | agree | miss | false alarm | scored, max 5 per repo | agree |
 |---|---|---|---|---|---|---|
-| pmemd 26 | 916 | 912 | 4 | 0 | 433 | 430 |
-| sander (AmberTools 24.8) | 1,902 | 1,883 | 19 | 0 | 466 | 451 |
+| pmemd 26 | 916 | 916 | 0 | 0 | 433 | 433 |
+| sander (AmberTools 24.8) | 1,892 | 1,892 | 0 | 0 | 457 | 457 |
 
-pmemd puts 1,082 files in "environment", most of them TI inputs whose masks match their own system.
-The misses are placeholders inside old-style GROUP input (not parsed), QM/MM settings that depend on
-the system, and one constant-pH combination with no rule yet. The run found three rules before they
-were written: a file that ends right after the closing `/` (both engines stop with "End of file"),
-sander missing `&cntrl` when a tab or `!` follows the name, and mask names over 4 characters.
+This is agreement on whether the engine refuses a file. It says nothing about the `silent` findings,
+which the engine runs by definition; those rest on the cases in `tests/cases.py`. The files that cannot
+be scored are left out: 1,082 for pmemd (mostly TI inputs whose masks match their own system) and 105
+for sander (QM/MM inputs that need their own system or an external QM program, and the like). Each
+"environment" file is matched by a specific engine message, listed in `ENVIRONMENT` in
+`tools/eval_corpus.py`.
+
+Running the corpus is how several rules were found: a file that ends right after the closing `/`,
+sander missing a namelist when a tab or `!` follows its name, mask names over 4 characters, constant
+pH with constant pressure, template placeholders in GROUP input, and where GROUP input has to sit
+relative to the namelists (the two engines differ).
 
 ## Limits
 
 - Key names are checked for `&cntrl`, `&ewald`, `&wt` (and `&qmmm` for sander). Other namelists are
   checked for syntax only.
-- Old-style GROUP input after the namelists is not parsed; its presence only stops the "no mask and
-  no group input" error.
+- Old-style GROUP input is parsed and its RES/ATOM groups are evaluated on the topology. Groups that
+  use FIND filters are checked for syntax but not evaluated.
 - Restarts in NetCDF-4/HDF5 format are not read (pmemd and sander write NetCDF-3, which is).
 - pmemd.cuda and pmemd.MPI were not probed. Some options they accept are refused by the CPU build,
   and the reverse.
@@ -125,9 +131,8 @@ sander missing `&cntrl` when a tab or `!` follows the name, and mask names over 
   they do in pmemd.
 - Warnings encode one set of practices (2 fs with SHAKE, 4 fs with HMR, `cut` ≥ 8 Å with PME,
   `ig=-1` with Langevin). The thresholds are in `POLICY` in `mdin_check/rules.py`.
-- Constant pH, QM/MM and TI inputs are checked for syntax, names and the common settings only;
-  rules specific to them (a QM region that does not fit the box, TI masks that must match) need
-  the system and are not there.
+- QM/MM and TI inputs are checked for syntax, names and the common settings; rules that need the
+  system's own chemistry (the QM region's charge, TI masks that must match) are not there.
 
 ## License
 

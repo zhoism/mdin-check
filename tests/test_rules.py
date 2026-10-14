@@ -30,6 +30,8 @@ def test_codes(case, eng):
         assert code in got, f"{code} missing; got {got}"
         if code in case.severity:
             assert got[code] == case.severity[code], f"{code} is {got[code]}, want {case.severity[code]}"
+    if case.group_atoms is not None:
+        assert [m["atoms"] for m in rep.masks if m["key"].startswith("group")] == case.group_atoms
     has_error = any(f.severity == "error" for f in rep.findings)
     assert has_error == (case.engine_verdict == "reject"), \
         f"engine {case.engine_verdict}s this file, mdin-check says {rep.verdict}: {got}"
