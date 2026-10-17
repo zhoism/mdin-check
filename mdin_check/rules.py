@@ -96,9 +96,20 @@ def _num(x):
 
 # --- structure -------------------------------------------------------------------------------
 
+def _namelist_at(md: Mdin, line: int) -> Namelist | None:
+    for nl in md.namelists:
+        if nl.line <= line <= (nl.end_line or 10 ** 9):
+            return nl
+    return None
+
+
 def _structure(c: _Ctx) -> None:
     md = c.md
     for i in md.issues:
+        inside = _namelist_at(md, i.line) if i.code in ("VALUE_WITHOUT_KEY", "UNTERMINATED_NAMELIST", "UNCLOSED_QUOTE",
+                                                        "STRING_SPANS_LINES") else None
+        if inside is not None and not _is_read(c, inside.name):
+            continue   # the engine skips this namelist (reported as NAMELIST_IGNORED / _UNKNOWN), so its contents do not matter
         if i.code == "HIDDEN_NAMELIST":
             name = md.text.split("\n")[i.line - 1].strip().lstrip("&$").split()[0].lower()
             if name.startswith("cntrl"):
@@ -184,7 +195,9 @@ def _is_read(c: _Ctx, name: str) -> bool:
 
 def _keys(c: _Ctx) -> None:
     for nl in c.md.namelists:
-        known = c.keys.get(nl.name) if _is_read(c, nl.name) else None
+        if not _is_read(c, nl.name):
+            continue
+        known = c.keys.get(nl.name)
         seen: dict[str, object] = {}
         for e in nl.entries:
             if known is not None and e.key not in known:
@@ -209,13 +222,18 @@ def _keys(c: _Ctx) -> None:
                 elif v.kind == "logical" and e.key not in MASK_KEYS and nl.name == "cntrl":
                     c.add("BAD_VALUE", "error", f"{e.key} = {v.raw}: &cntrl flags are integers, not logicals",
                           v.line, nl.name, e.key, fix=f"{e.key}=1")
+                elif v.kind == "real" and _type(c, nl.name, e.key) == "int":
+                    whole = v.value == int(v.value)
+                    c.add("REAL_FOR_INT", "error", f"{e.key} = {v.raw}: {e.key} is an integer, and the engine stops at "
+                          "the decimal point or exponent ('Cannot match namelist object name')", v.line, nl.name,
+                          e.key, fix=f"{e.key}={int(v.value)}" if whole else f"{e.key} takes a whole number")
                 elif v.kind == "string" and nl.name in ("cntrl", "ewald") and e.key not in MASK_KEYS \
                         and _numeric_key(c, nl.name, e.key) and _looks_number(v.value):
                     c.add("BAD_VALUE", "error", f"{e.key} = {v.raw}: a number in quotes does not read as a number",
                           v.line, nl.name, e.key, fix=f"{e.key}={v.value.strip()}")
-            arrays = KEYS.get("arrays", {}).get(nl.name)
-            if arrays is not None and e.index is None and len(e.values) > 1 and e.key not in arrays \
-                    and e.key in KEYS.get("types", {}).get(nl.name, {}):
+            arrays = KEYS.get("arrays", {}).get(c.engine, {}).get(nl.name, [])
+            if e.index is None and len(e.values) > 1 and e.key not in arrays \
+                    and _type(c, nl.name, e.key) is not None:
                 c.add("VALUE_WITHOUT_KEY", "error", f"{e.key} takes one value; got {len(e.values)} "
                       f"({' '.join(v.raw for v in e.values)}). A missing comma or '=' is the usual cause",
                       e.values[1].line, nl.name, e.key)
@@ -231,8 +249,12 @@ def _keys(c: _Ctx) -> None:
                 seen[e.key] = val
 
 
+def _type(c: _Ctx, nl: str, key: str) -> str | None:
+    return KEYS.get("types", {}).get(c.engine, {}).get(nl, {}).get(key)
+
+
 def _numeric_key(c: _Ctx, nl: str, key: str) -> bool:
-    return key in KEYS.get("types", {}).get(nl, {}) and KEYS["types"][nl][key] == "num"
+    return _type(c, nl, key) in ("int", "real")
 
 
 def _looks_number(s: str) -> bool:
@@ -253,6 +275,13 @@ def _domains(c: _Ctx) -> None:
         if c.has(key) and isinstance(val, int) and val not in allowed:
             c.add("VALUE_DOMAIN", "error", f"{c.engine} accepts {key} = {', '.join(map(str, allowed))}; got {val}",
                   c.line(key), "cntrl", key)
+    ew = c.md.first("ewald")
+    if ew is not None:
+        for key, allowed in c.facts.get("ewald_domains", {}).items():
+            val = ew.value(key)
+            if isinstance(val, int) and not isinstance(val, bool) and val not in allowed:
+                c.add("VALUE_DOMAIN", "error", f"{c.engine} accepts {key} = {', '.join(map(str, allowed))} in &ewald; "
+                      f"got {val}", ew.get(key).line, "ewald", key)
     for key in c.facts["nonnegative"]:
         val = _num(c.v(key))
         if val is not None and val < 0:
@@ -301,7 +330,11 @@ def _cntrl(c: _Ctx) -> None:
     if gamma > 0 and ntt != 3 and not (c.engine == "sander" and 3 <= ntt <= 10):
         c.add("THERMOSTAT", "error", f"gamma_ln={gamma} is set but ntt={ntt}; the engine requires ntt=3 when "
               "gamma_ln > 0", c.line("gamma_ln"), "cntrl", "gamma_ln", fix="ntt=3, or remove gamma_ln")
-    if md_run and ntt == 3 and gamma <= 0:
+    if md_run and gamma <= 0 and ntb == 2 and (ntt == 3 or (c.engine == "sander" and ntt == 4)):
+        c.add("THERMOSTAT", "error", f"ntt={ntt} with gamma_ln=0" + ("" if c.has("gamma_ln") else " (the default)") +
+              " at constant pressure (ntb=2): the engine requires gamma_ln > 0", c.line("ntt"), "cntrl", "gamma_ln",
+              fix="set gamma_ln, e.g. gamma_ln=2.0")
+    elif md_run and ntt == 3 and gamma <= 0:
         c.add("THERMOSTAT_OFF", "silent", "ntt=3 (Langevin) with gamma_ln=0" + ("" if c.has("gamma_ln") else
               " (the default)") + ": no friction, so no temperature control", c.line("ntt"), "cntrl", "gamma_ln",
               fix="set gamma_ln, e.g. gamma_ln=2.0")
@@ -325,6 +358,22 @@ def _cntrl(c: _Ctx) -> None:
         if nstlim is not None and mcbar > nstlim:
             c.add("PRESSURE", "error", f"barostat=2 with mcbarint={mcbar} > nstlim={nstlim}", c.line("barostat"),
                   "cntrl", "mcbarint")
+    if c.engine == "pmemd" and (_num(c.v("ifsc", 0)) or 0) > 0:
+        if _num(c.v("icfe", 0)) != 1:
+            c.add("SOFTCORE", "error", "ifsc>0 (softcore) needs a TI run: icfe=1", c.line("ifsc"), "cntrl", "ifsc",
+                  fix="icfe=1, with timask1/timask2 and scmask1/scmask2")
+        elif ntf != 1:
+            c.add("SOFTCORE", "error", f"softcore TI needs ntf=1 (SHAKE constraints on some bonds otherwise drop "
+                  f"their forces between the regions); got ntf={ntf}", c.line("ntf"), "cntrl", "ntf", fix="ntf=1")
+    gb_cut = _num(c.v("cut"))
+    if gb_cut is None and ntb == 0:
+        gb_cut = 9999.0 if igb > 0 else 8.0   # the defaults both engines print for these runs
+    small = igb > 0 if c.engine == "pmemd" else ntb == 0
+    if small and gb_cut is not None and 0 < gb_cut < FACTS["gb_min_cut"]:
+        what = f"a Generalized Born (igb={igb})" if igb > 0 else "a non-periodic (ntb=0)"
+        c.add("CUT", "error", f"cut={gb_cut} Å" + ("" if c.has("cut") else " (the default)") +
+              f": {c.engine} refuses {what} run with a cutoff below about "
+              f"{FACTS['gb_min_cut']} Å", c.line("cut"), "cntrl", "cut", fix="cut=999.0 (no cutoff) is usual here")
     allowed = c.facts.get("barostat_when_ntp")
     if allowed and ntp > 0 and c.has("barostat") and c.v("barostat") not in allowed:
         c.add("VALUE_DOMAIN", "error", f"with ntp>0, {c.engine} accepts barostat = {', '.join(map(str, allowed))}; "

@@ -1,0 +1,2567 @@
+{
+ "summary": {
+  "engine": "sander",
+  "files": 206,
+  "repos": 34,
+  "outcomes": {
+   "agree": 162,
+   "environment": 42,
+   "unverifiable": 2
+  },
+  "agreement_on_scored": 1.0,
+  "outcomes_max_5_per_repo": {
+   "agree": 100,
+   "environment": 32,
+   "unverifiable": 2
+  },
+  "agreement_max_5_per_repo": 1.0,
+  "findings_by_code": {
+   "FIXED_SEED:warning": 47,
+   "UNKNOWN_KEY:error": 17,
+   "OUTPUT:info": 12,
+   "WT_RAMP:warning": 10,
+   "NO_TITLE:error": 9,
+   "BAD_VALUE:error": 7,
+   "MASK_JUXTAPOSED:silent": 7,
+   "NAMELIST_UNKNOWN:silent": 7,
+   "MASK_SYNTAX:error": 6,
+   "NO_FINAL_NEWLINE:error": 4,
+   "OUTPUT:silent": 3,
+   "TEMP0_UNUSED:warning": 2,
+   "GROUP_INPUT:error": 2,
+   "NAMELIST_IGNORED:silent": 2,
+   "DT:warning": 1,
+   "DUPLICATE_NAMELIST:silent": 1,
+   "HIDDEN_NAMELIST:silent": 1
+  }
+ },
+ "files": [
+  {
+   "file": "006180d8876685a46adb3a0f9a633e15dd403012.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "BAD_VALUE:error",
+    "FIXED_SEED:warning",
+    "OUTPUT:silent"
+   ],
+   "errors": [
+    "temp0 = XXXXX: not a number, a logical, or a quoted string",
+    "ig = RANDOM_NUMBER: not a number, a logical, or a quoted string"
+   ],
+   "repo": "tutorial:advanced/tutorial42"
+  },
+  {
+   "file": "024d7c8003209e9ecf9e51c61205a252d32bf0d7.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "0269c040ff5ec56ec21a00155751bb6ab5dfd25d.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "05a694e1e9bd748bed2b76acdb28e4f8eaa259d5.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial28"
+  },
+  {
+   "file": "060a2e19b777d44d30ed0b52286d437ad1df458c.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "070ae5cdceb2868f9c98fb15f5c49277d6e3fd29.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   18: File \"cpin\" is missing or unreadable",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "0838c4f85511876249179c52f821aa20a635df6d.in",
+   "outcome": "unverifiable",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "RMS force error =  0.357E-07",
+   "codes": [
+    "TEMP0_UNUSED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:pengfei/files"
+  },
+  {
+   "file": "0876b577d15d14b4defceb24ff619ac1d0431ab7.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "0893cc0b56d0ecbd8a8058a73ed51a2a8dbb4195.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ioutopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ipermdip' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'pwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'igdm' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc12' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc13' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'virtual' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial19"
+  },
+  {
+   "file": "09f85437c4a754127171ad9406daf9624965dda5.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial0"
+  },
+  {
+   "file": "0adaf688428e844027a8a5dedc2a8a9b6668616a.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber11"
+  },
+  {
+   "file": "0bbc6a7a114b5d361759fca9ddcb99222a34378d.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial20"
+  },
+  {
+   "file": "0ced47b1b64b231450f49d765b74bf441688d496.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial15"
+  },
+  {
+   "file": "0d60713c7a78b993bb782654bd3f6d1c65a7d825.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "0d7896524a141cd1de7144cfad48c7850fa2a5dc.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "0e1be026ff9c946b06604a33e9dc587a7d8e5a51.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial3"
+  },
+  {
+   "file": "0f60264ea4590a6ca2622109a84846b66f3de31f.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Fortran runtime error: End of file",
+   "codes": [
+    "FIXED_SEED:warning",
+    "NO_FINAL_NEWLINE:error"
+   ],
+   "errors": [
+    "the file ends right after the closing '/' of the last namelist, with no line break; the engine stops with 'End of file'"
+   ],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "116aa76b760b94a11bded79d5359938a0a5ae3ec.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "14277ed29b251317692c5adbf63fef82f8b23de0.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "BAD_VALUE:error",
+    "FIXED_SEED:warning"
+   ],
+   "errors": [
+    "temp0 = XXXXX: not a number, a logical, or a quoted string",
+    "ig = RANDOM_NUMBER: not a number, a logical, or a quoted string"
+   ],
+   "repo": "tutorial:advanced/tutorial42"
+  },
+  {
+   "file": "16f0dbbe3a89a63dd621f94045a5e7525e792db3.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ioutopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ipermdip' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'pwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'igdm' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc12' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc13' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'virtual' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial19"
+  },
+  {
+   "file": "17beeb1addfe5e129127dbe797afc7f6526f1ac5.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "198ce0d310b44c5e1428e1bb5e0aea36e47ff4a1.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "of 1.0 to 2.0 angstroms for igb=7 or 8. Regenerate prmtop file with bondi radii.",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:analysis/tutorial_notebooks"
+  },
+  {
+   "file": "1a276323fabc3329266a6cc5d68106c93e8dbe01.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ioutopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ipermdip' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'igdm' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc12' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc13' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial19"
+  },
+  {
+   "file": "1a9d16d2e77ac9f85cab483b7e278f446f61143d.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "1ad577ff655fcc90775d33fdff17691ccf49a087.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "1fa9666d4ba7f66dac5da273c279b9d9d856f602.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial3"
+  },
+  {
+   "file": "244a97358442963cbfb7a108fcb3910c0b11133e.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial2"
+  },
+  {
+   "file": "24dfb5fab95c767450361e552445d921318505c4.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "MASK_JUXTAPOSED:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "274570b18411ef0730ebf9fd5ed6a3eb02651d16.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "27a8208945b9eee839d6d5984681e71bae017691.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "of 1.0 to 2.0 angstroms for igb=7 or 8. Regenerate prmtop file with bondi radii.",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial19"
+  },
+  {
+   "file": "2b46a327f12385e1b3518d54c76bf2e157894cb6.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "2c89e9dbca5c4ac182182b290488badb72bb498b.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "of 1.0 to 2.0 angstroms for igb=7 or 8. Regenerate prmtop file with bondi radii.",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial15"
+  },
+  {
+   "file": "2d5eed221ec7a55ce9eb5d7965b88dd581274a0d.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "2f259e44c0252481b511e0a526a6bb08c690c7f9.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"RST\" is missing or unreadable",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial4"
+  },
+  {
+   "file": "2f6540dbb8e2c7d8858cca6c4b6a8bf779061c8d.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "300aec86f2f7cfac38a299dd3377e6b0ba849559.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Check ew_legal.h",
+   "codes": [
+    "FIXED_SEED:warning",
+    "MASK_SYNTAX:error"
+   ],
+   "errors": [
+    "restraintmask=':PROTEIN': residue name 'PROTEIN' is longer than 4 characters; Amber names have at most 4 (a placeholder left in a template, such as ':1-TOTRES', fails this way)"
+   ],
+   "repo": "tutorial:advanced/tutorial38"
+  },
+  {
+   "file": "32313f4868ff07fa7d4c2d05437168fa7bf9f5d2.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "3281378f5b51f75e95b4488c3508056087743287.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Error in group input::atommask.f::residue_namelist",
+   "codes": [
+    "MASK_SYNTAX:error"
+   ],
+   "errors": [
+    "restraintmask=':PROTEIN+LIPID': residue name 'PROTEIN+LIPID' is longer than 4 characters; Amber names have at most 4 (a placeholder left in a template, such as ':1-TOTRES', fails this way)"
+   ],
+   "repo": "tutorial:advanced/tutorial38"
+  },
+  {
+   "file": "34810be3c18e7badb7884cc32b6b214f4667ed26.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "361da4c9b1fe686ad20d560137eec76a7448f851.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "3777166fa88f91e61cd7cd7f52bb78f17c0c0355.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial14"
+  },
+  {
+   "file": "38bf4b7a1738f508ab927913d69b6204814add5e.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial20"
+  },
+  {
+   "file": "3aee9f1789859b3ec3d0b957afdd9d55499c7064.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "3af531b0ea09be27df22f73eb0fa0551bad14f6c.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "GROUP_INPUT:error",
+    "NAMELIST_UNKNOWN:silent",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
+    "sander does not accept 'gbion' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_nn' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial24"
+  },
+  {
+   "file": "3c792236fe5d2e6527ca94e07110fb9826f66d62.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Fortran runtime error: End of file",
+   "codes": [
+    "NO_FINAL_NEWLINE:error"
+   ],
+   "errors": [
+    "the file ends right after the closing '/' of the last namelist, with no line break; the engine stops with 'End of file'"
+   ],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "3d66b80286929dbcbd4c8a3f5d33a3f1ed1b888c.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "3d95b15f7e83f2d6562f5b67f6cd61454b8c76c6.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"disang.120\" is missing or unreadable",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "3dceead52b9e12b905e26bf7ad8cf56df14ec5a4.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "of 1.0 to 2.0 angstroms for igb=7 or 8. Regenerate prmtop file with bondi radii.",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial15"
+  },
+  {
+   "file": "44576f0ce8a2ba7f0bd64a075cb03cf7a1da58f9.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "MASK_JUXTAPOSED:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "46367c2f9559dfa3ec93b39c24ce119c2b2985be.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "4a0d4bafb23e04624a535cd15029e684d5f060e3.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "4a6a32dc671a50cd85c5929cb1826c14ebef05e0.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "GROUP_INPUT:error",
+    "NAMELIST_UNKNOWN:silent",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "ntr=1 with no restraintmask and no group input after the namelists: the engine reads past the end of the file",
+    "sander does not accept 'gbion' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_nn' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial24"
+  },
+  {
+   "file": "4b83690a2b8737e61170a1abbb846cbdb769b61d.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "4c9ae486f742aaf05ba36d6387a4752a993aacf3.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "4dac705d2fc4f94c329418767ddefabd103ab094.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "4df2346c5eb9a37cb855aab19a40663f4a501808.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "TESTING RELATIVE ERROR over r ranging from 0.0 to cutoff",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial2"
+  },
+  {
+   "file": "4eb4acbb3451ebb01f283edf5dc92e133702a7c5.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [
+    "FIXED_SEED:warning",
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "50ad44b9093a3512ab3400cbb0ecd22e9639ff38.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "BAD_VALUE:error",
+    "FIXED_SEED:warning",
+    "OUTPUT:silent"
+   ],
+   "errors": [
+    "temp0 = XXXXX: not a number, a logical, or a quoted string",
+    "ig = RANDOM_NUMBER: not a number, a logical, or a quoted string"
+   ],
+   "repo": "tutorial:advanced/tutorial7"
+  },
+  {
+   "file": "512f12444ea298db602cdd85ef9f9ab0a0907878.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial16"
+  },
+  {
+   "file": "520c55abefb0e78d02bb74931987ec4b149769d5.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "522882d6ca9dcf3af330f5283515f193a8d3f2ea.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "529455b445f74c1d585ced710ba3834f44362bd6.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:advanced/tutorial1"
+  },
+  {
+   "file": "53e1b65cc053c3dc4a341bff1ea57f839e41bfb2.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "5419c47e89fc9618af61c2143f17b84ad54d0df4.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"RST\" is missing or unreadable",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial4"
+  },
+  {
+   "file": "55efb01b8d93d1fc457eae726d3e841894a6c11c.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "56bb359b81b27a081d2ac7c5ffbe1fb2e6b1f6d4.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "58bed0fa60a7089f83a8f1b4bb2ae508e5e61175.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"disang.60\" is missing or unreadable",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "599df4add990904e43d0148d5c6bd08001e33cb5.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   18: File \"cpin\" is missing or unreadable",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "62305b29c802543b8dba0c264a145b56e7e7e6b8.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial15"
+  },
+  {
+   "file": "63791e7f3ee37a7bce5f1e0335540e9085dd72c6.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial16"
+  },
+  {
+   "file": "63f695002f58d98de79077c75366b54b3e8b363f.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "648c38b489c9ab3013411e97441ced3eed169586.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "67f765fee70431e93771f6a7c866a07163bf6b67.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial16"
+  },
+  {
+   "file": "68d2a0c61ddcf912698b91847388aa90aac07367.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "6b625072297ee619551d54c415fee8628ab35f65.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "6caaa39b175bfc061f65d5e149d44eeeaad8c4aa.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "6cfd6959e26fde8c6b94624e016cf470830270cd.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial38"
+  },
+  {
+   "file": "6d3b59e8aa61e75bc11205ca38ee8ce3373d9c4a.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Error in group input::atommask.f::residue_namelist",
+   "codes": [
+    "MASK_SYNTAX:error"
+   ],
+   "errors": [
+    "restraintmask=':PROTEIN+LIGAND': residue name 'PROTEIN+LIGAND' is longer than 4 characters; Amber names have at most 4 (a placeholder left in a template, such as ':1-TOTRES', fails this way)"
+   ],
+   "repo": "tutorial:advanced/tutorial38"
+  },
+  {
+   "file": "6e8df2c6cdb9a2c53b7f9660f8d26dde0acdfe38.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "70270f7bb0cf4012a1a16733b0c70efced343065.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "7044ec91af24170311caf394007c448de733d10a.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial2"
+  },
+  {
+   "file": "71c7a87591729b2b03c289475e23fb867547ec0c.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "732d5dc5641db2aeef38d585dde4bc4d4452449e.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial3"
+  },
+  {
+   "file": "74a1d5531e18cea86f7dbe802d1fb90ad32b64bf.in",
+   "outcome": "unverifiable",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "RMS force error =  0.357E-07",
+   "codes": [
+    "TEMP0_UNUSED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial20"
+  },
+  {
+   "file": "7706f04588369a1a0c0dc818e068ff21443224db.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "781e08a6b117e18a4bff3fcce061e8ff594c66c8.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "78d60b641270c44f189a06ef7df6dc2a5e927149.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "7904ae7ba82e80d9afd0593f7dc99b499497d174.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"disang.60\" is missing or unreadable",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "79ade69252733885d851bed86e4b5b3d7688cd22.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber11"
+  },
+  {
+   "file": "7aaee26b47b7a43b10eff96179ccc66fe084ff84.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"disang.120\" is missing or unreadable",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "7bab8111a634e4a1e5967658e3289387a34e01dd.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "7c4679a355d4d54dd146944e887a9de8c37ee075.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "7d031b3168e1be70cbadb1c9c7fe21953bff7fcf.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial4"
+  },
+  {
+   "file": "7dd4b0a0500f3f7f7840a56194ad288103a39e7c.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "numgroup must be 2 if icfe is set",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial6"
+  },
+  {
+   "file": "7e10e431178e9184d0d480d7277820a16bb20a94.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber11"
+  },
+  {
+   "file": "7fca1aaa09c5276fd0baa83e00880f1784b8832f.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:advanced/tutorial1"
+  },
+  {
+   "file": "81de35f8d44ffc25fb595c9a78603b0753f6b057.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "81e36a8229a07d7c39ac1bac525c6f2f149e90c2.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "BAD_VALUE:error",
+    "FIXED_SEED:warning"
+   ],
+   "errors": [
+    "temp0 = XXXXX: not a number, a logical, or a quoted string",
+    "ig = RANDOM_NUMBER: not a number, a logical, or a quoted string"
+   ],
+   "repo": "tutorial:advanced/tutorial7"
+  },
+  {
+   "file": "8260e7408186ceafddc3883c3492bfa1e9e73c72.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "MASK_JUXTAPOSED:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "82a2f62f0576501bf9721f95e7c1723b6179b96e.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "8406382b3098e350d9d1468eb89bfd20911a7d59.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "86404b3cbc9dfa924ddf69e112a5397b7427db23.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial20"
+  },
+  {
+   "file": "88709c2614eaa65468fe519df9c0bef35ec8da2e.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "89bb97e402b980c09527df000e9e32bdecf585aa.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial3"
+  },
+  {
+   "file": "8c3792f1c09f5e2150a87c7268ddce4b37fcd3fd.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber11"
+  },
+  {
+   "file": "8d383f7573cbf50b39ccad05ead749c81566569a.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "8e361c5d7fb4f3393076839f3641226a86a27153.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "8e93680fba9f1bd0d571907cc37625e239a8eb30.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:advanced/tutorial1"
+  },
+  {
+   "file": "941eeeee8415ae57228ac03b5af25a924f0428c1.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "numgroup must be 2 if icfe is set",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial6"
+  },
+  {
+   "file": "94ef4ff4f92b3f7998c4a0ea5889b8a0f187f3e9.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Fortran runtime error: End of file",
+   "codes": [
+    "FIXED_SEED:warning",
+    "NO_FINAL_NEWLINE:error"
+   ],
+   "errors": [
+    "the file ends right after the closing '/' of the last namelist, with no line break; the engine stops with 'End of file'"
+   ],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "96a2fa140683369bb50e82883511d3dbac1af237.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   18: File \"cpin\" is missing or unreadable",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial18"
+  },
+  {
+   "file": "99b0c59d370212431656f8da9fb9ecbb6b7c84de.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "9a64361499c11eb2f58370af4e1fb93181c79a56.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "9a77ae6f592b950ebd5cd215b604b9d1a91f9e30.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "9bd60ada0211432a876255a9594ea55259560664.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"_RESTRAINTS_FILE_\" is missing or unreadable",
+   "codes": [
+    "DT:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial19"
+  },
+  {
+   "file": "9c0988e2affabf8d7f08fa7fe8cf8751b7133bc7.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "9c3e803c00997c3fe5f37a223e6c69777ce6e7f7.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"disang.60\" is missing or unreadable",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "9c5a3e5e913ff83a1413b32641c1c94ac6383db8.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial6"
+  },
+  {
+   "file": "9dcf7c7f2c139706fa86d53d0cac85ee9c9ecbe2.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial7"
+  },
+  {
+   "file": "a09151160740b90cbd299d88f45cab978b0ba44d.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "a188b756fb57e10373487d716dd6ed7b4271572b.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial0"
+  },
+  {
+   "file": "a24859f97ddda867f267dbeb2920e9dff5842a8a.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "a42f120dff40112ad2df1468dc07c9d0f77300a2.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "aafb37d277c706b5020504519629d17556351ac5.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "abddfd361353fd0f6eaa16861301e3ca06329b3c.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber11"
+  },
+  {
+   "file": "ac7b360bb37f3097e260987a1501d210ba78c809.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "ad5e3dc100e57a0cf043cde5ace7584fdf0e3d8c.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "numgroup must be 2 if icfe is set",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial6"
+  },
+  {
+   "file": "ad7a61d682653af67add43cf10f56733d6967e66.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "ae112c6b02190c5d169010d8e7f06db73893d486.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "ae51b455d84cdaafc15f2ec3b02072232e24279f.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:advanced/tutorial1"
+  },
+  {
+   "file": "aeddf0292fad0ff786933772a1fc80fc5a4f63bf.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "af405de3a63dc4cd0b16271b9408a2768fc131e2.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "af721f12151d2fb7898370162bc1c0cc8bf24dd2.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "b0a57e6355a9da9d186b69df0eab97108e6ed78c.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"RST\" is missing or unreadable",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial4"
+  },
+  {
+   "file": "b45b28345b271aa4e9b0a0cb1b125d3e0c146354.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "b502bb5f55c03138fb284d0b09b24f5dd4ca8737.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "b5e3d87044fc3226c94fed93f3f85919c89eb7c7.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "b5ef141d1bdcdeaa283f739eecb86f8cc1234778.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "of 1.0 to 2.0 angstroms for igb=7 or 8. Regenerate prmtop file with bondi radii.",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial15"
+  },
+  {
+   "file": "b707df9d4fea211444e777ed87773aae077bf839.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "b7e4d592511ec0ad5f82e8e2c038e21361b8660c.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "b8b71842e44a85f51c5c87b9e42f3a45da8500c3.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   18: File \"cpin\" is missing or unreadable",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial18"
+  },
+  {
+   "file": "bb06d3e28834bc33683dabcdc650900091c73263.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "bb6cb629eaf11170b8f2cca850370d7c3c1599ba.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "bb9da3170f1bdef0cad419d48f8effe76dc7cfcd.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "bd40fe264762b5c7276223ac956e29b710336149.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ioutopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ipermdip' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'igdm' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc12' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'exc13' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial19"
+  },
+  {
+   "file": "bdd03e5484976f2e94957a4ba46ce35cf29f906f.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial28"
+  },
+  {
+   "file": "bebc5b2c213803a83ff79cb6ff14dea967d3f589.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "NAMELIST_UNKNOWN:silent",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'gbion' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_nn' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial24"
+  },
+  {
+   "file": "beea19313116ef8ac8d46657d77ba844e8d4b09c.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "c008fab5513ba27360af5170d02a6155533aeab3.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial4b"
+  },
+  {
+   "file": "c0de3d1eb94ecfbf1429f90eef51538e60df2623.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "c15c24e4642b5b6ce2a05eff652410d02fd585ef.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "c3185f10765cc675e66bc4cb3263b24a089ff61a.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "NAMELIST_UNKNOWN:silent",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'gbion' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_nn' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial24"
+  },
+  {
+   "file": "c4ae32e2bcdafc05ac34d021874ff068a650e5d1.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "c8a22ace94ab016337e5ba41ef11f1ab85ad1053.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "c91aaa07888bc277c87fb326e3dbb89f7fe3988f.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "NAMELIST_UNKNOWN:silent",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'gbion' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gi_coef_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'intdiel_ion_2_nn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_p' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_1_n' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pp' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_pn' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'gb_neckscale_ion_2_nn' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial24"
+  },
+  {
+   "file": "c939776ea9c9d26c0f64979c007488a2a6a8d6bf.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "c97cda64b7ee0e79ae888cafa63c2c9408849f7e.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Error in group input::atommask.f::residue_namelist",
+   "codes": [
+    "MASK_SYNTAX:error"
+   ],
+   "errors": [
+    "restraintmask=':PROTEIN': residue name 'PROTEIN' is longer than 4 characters; Amber names have at most 4 (a placeholder left in a template, such as ':1-TOTRES', fails this way)"
+   ],
+   "repo": "tutorial:advanced/tutorial38"
+  },
+  {
+   "file": "ca048edb5c4205c66f35389545f9b21b02c83e76.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Check ew_legal.h",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial16"
+  },
+  {
+   "file": "cbf357afe97142accb2f65c608ed1c5bc08b5c9b.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ioutopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ipermdip' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial19"
+  },
+  {
+   "file": "cc3f11a9d838aed999c6d0dd7fd180257337f56a.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "MASK_JUXTAPOSED:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "cd070dbbecfa17eb7c4a82a24f6716bb61360102.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber11"
+  },
+  {
+   "file": "cd45923d43898baa72a16eec0ef9f0c98324d297.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "ce61c23debda12f5fb31d7b517900f9125b17a79.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial16"
+  },
+  {
+   "file": "cefa5d1955a6795188b88a248c23da29e9ca994a.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial3"
+  },
+  {
+   "file": "cfa89b0e6539fc63b29cdf838ca260be9791e2f0.in",
+   "outcome": "environment",
+   "static": "suspect",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"disang.$dihed\" is missing or unreadable",
+   "codes": [
+    "DUPLICATE_NAMELIST:silent",
+    "HIDDEN_NAMELIST:silent",
+    "NAMELIST_IGNORED:silent",
+    "NAMELIST_UNKNOWN:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "cfc1e7c6cbe894bdc33cc3b3c560b602c4d37b86.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial4b"
+  },
+  {
+   "file": "d1278a85754be8402e9bdbfb7ad1bdccecaf5592.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'nmol' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ioutopt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'ipermdip' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:basic/tutorial19"
+  },
+  {
+   "file": "d242bd99d269b12970504853d822b706d67637f3.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Fortran runtime error: End of file",
+   "codes": [
+    "NO_FINAL_NEWLINE:error"
+   ],
+   "errors": [
+    "the file ends right after the closing '/' of the last namelist, with no line break; the engine stops with 'End of file'"
+   ],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "d2e0e552a5444a131fb24c1491d0aa3d0e5759ca.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial20"
+  },
+  {
+   "file": "d3bfc89d3afabe35e048cfb89a82e3da29019a1f.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "MASK_JUXTAPOSED:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "d51f69cb706c115ec0c36989358ff284e46f2ba5.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial20"
+  },
+  {
+   "file": "d610ab28b546a083cf564949a5caa5a03902f96b.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "NAMELIST_UNKNOWN:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "d616ccad6094816ff84e15b3309074ecb5d8fa49.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "BAD_VALUE:error",
+    "FIXED_SEED:warning",
+    "OUTPUT:silent"
+   ],
+   "errors": [
+    "temp0 = XXXXX: not a number, a logical, or a quoted string",
+    "ig = RANDOM_NUMBER: not a number, a logical, or a quoted string"
+   ],
+   "repo": "tutorial:advanced/tutorial7"
+  },
+  {
+   "file": "d61f5a1b3854c8119c1824d2a22e4574363d65fc.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial3"
+  },
+  {
+   "file": "d6eaf01ec2b17c9d0752afcde26f4e2b08ec18ca.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "d6fe7f5b7dad85cf854430d6b19f8f3cfa66fb19.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "d71f05ec937215452bf6f8ae2721244e46b4cc14.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   33: File \"disang.120\" is missing or unreadable",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "d82285b48fe813b9ec61f1a0342692bc564096a7.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "WT_RAMP:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "d852bc5571c780c54d1921c8321b48e890e9c767.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial22"
+  },
+  {
+   "file": "d864842390ff70035b68d53356f4bc5f6b0124b1.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber9"
+  },
+  {
+   "file": "d97ddbe682fed28f1e322f9846c0c32595ccf3bb.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial17"
+  },
+  {
+   "file": "d9de661da1ecdbd223597a934fb9249618927f1f.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "*** input error(s)",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial5_amber11"
+  },
+  {
+   "file": "da0cd88bf1e734c5073009045b5a9d4e7da69055.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "MASK_JUXTAPOSED:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "dc190b6219c77f865fa00e80a56c7db02fb429ea.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "e46c8c375ff392fea4add08c36b0401028a72e69.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:advanced/tutorial1"
+  },
+  {
+   "file": "e4c9c83dcf0fed9a0d6513314e100bb10e1e636c.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Error opening unit   18: File \"cpin\" is missing or unreadable",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial18"
+  },
+  {
+   "file": "e50ae7e83c684d247079f6bf61016527211c4a28.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "Check ew_legal.h",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial38"
+  },
+  {
+   "file": "e71d774ddc197ac5d1c8a272624cc1492a58247a.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial25"
+  },
+  {
+   "file": "e863669d1d4a4e5cd5d7b945f5d2ad3155faced8.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial2"
+  },
+  {
+   "file": "ea1cc69eaf0513c571f7107c6076b694de863c0c.in",
+   "outcome": "agree",
+   "static": "suspect",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "MASK_JUXTAPOSED:silent"
+   ],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial33"
+  },
+  {
+   "file": "eb0dc731fdfffa3835e6bba4495d6a732426fd7e.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [
+    "FIXED_SEED:warning"
+   ],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "ebea4a0a1a8a0b7451f6b8abc0133c4693f75fcd.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial27"
+  },
+  {
+   "file": "eeec81c6d03877de1c725abe3a921c741a13ad54.in",
+   "outcome": "environment",
+   "static": "ok",
+   "engine_accepted": false,
+   "engine_error": "of 1.0 to 2.0 angstroms for igb=7 or 8. Regenerate prmtop file with bondi radii.",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:analysis/tutorial_notebooks"
+  },
+  {
+   "file": "f2e298bd71aa030aff7cbb669cf80e615a5da9fd.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial0"
+  },
+  {
+   "file": "f69f87b921ef3f0565ba6a15a3d0b9f33b454640.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "f6dd95b57beffe9e31281a5f784865f5aaa303e5.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "OUTPUT:info",
+    "UNKNOWN_KEY:error"
+   ],
+   "errors": [
+    "sander does not accept 'ihfree' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'qwt' in &cntrl ('error in reading namelist')",
+    "sander does not accept 'iqopt' in &cntrl ('error in reading namelist')"
+   ],
+   "repo": "tutorial:advanced/tutorial1"
+  },
+  {
+   "file": "f76ca3c1228e196fbbf710016fc50dd9a4b81d31.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial20"
+  },
+  {
+   "file": "f8413b978c30c72618db9cadf951befb84526587.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "BAD_VALUE:error",
+    "FIXED_SEED:warning",
+    "NAMELIST_IGNORED:silent"
+   ],
+   "errors": [
+    "ig = _SEED_: not a number, a logical, or a quoted string"
+   ],
+   "repo": "tutorial:advanced/tutorial19"
+  },
+  {
+   "file": "f9628e90e5821820c849abf48ae06245bb06afd7.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial21"
+  },
+  {
+   "file": "f9c9d4eefdb4a4692fc319a1b4d041660d8af979.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:advanced/tutorial21"
+  },
+  {
+   "file": "f9eedd64b95e320b670eb4062b26cecc7fe2dacf.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial1"
+  },
+  {
+   "file": "fc434ac647f3a47750e527cd1c623e145b5a148a.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "error in reading namelist cntrl",
+   "codes": [
+    "BAD_VALUE:error",
+    "FIXED_SEED:warning"
+   ],
+   "errors": [
+    "temp0 = XXXXX: not a number, a logical, or a quoted string",
+    "ig = RANDOM_NUMBER: not a number, a logical, or a quoted string"
+   ],
+   "repo": "tutorial:advanced/tutorial7"
+  },
+  {
+   "file": "fd2b627493f2216c77fc76d1c4074840aa70056c.in",
+   "outcome": "agree",
+   "static": "ok",
+   "engine_accepted": true,
+   "engine_error": "",
+   "codes": [],
+   "errors": [],
+   "repo": "tutorial:basic/tutorial3"
+  },
+  {
+   "file": "fe022feb4f8b02806ed9fc254a586a829507e23b.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Could not find cntrl namelist",
+   "codes": [
+    "NO_TITLE:error"
+   ],
+   "errors": [
+    "sander reads line 1 as the title, so a namelist on line 1 is not found"
+   ],
+   "repo": "tutorial:basic/tutorial13"
+  },
+  {
+   "file": "feb7eb2ffa9da014e8cbf5103c5d8ddb42de5e23.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Check ew_legal.h",
+   "codes": [
+    "FIXED_SEED:warning",
+    "MASK_SYNTAX:error"
+   ],
+   "errors": [
+    "restraintmask=':PROTEIN': residue name 'PROTEIN' is longer than 4 characters; Amber names have at most 4 (a placeholder left in a template, such as ':1-TOTRES', fails this way)"
+   ],
+   "repo": "tutorial:advanced/tutorial38"
+  },
+  {
+   "file": "ff27bf08ea807f8a90277c2e2a75579cdcf887f1.in",
+   "outcome": "agree",
+   "static": "reject",
+   "engine_accepted": false,
+   "engine_error": "Error in group input::atommask.f::residue_namelist",
+   "codes": [
+    "MASK_SYNTAX:error"
+   ],
+   "errors": [
+    "restraintmask=':PROTEIN+LIPID': residue name 'PROTEIN+LIPID' is longer than 4 characters; Amber names have at most 4 (a placeholder left in a template, such as ':1-TOTRES', fails this way)"
+   ],
+   "repo": "tutorial:advanced/tutorial38"
+  }
+ ]
+}

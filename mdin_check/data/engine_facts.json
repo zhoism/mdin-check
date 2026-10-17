@@ -80,6 +80,10 @@
    ],
    "idecomp": [
     0
+   ],
+   "ntr": [
+    0,
+    1
    ]
   },
   "nonnegative": [
@@ -137,7 +141,13 @@
    "VDW"
   ],
   "title_optional": true,
-  "mask_max_length": 1024
+  "mask_max_length": 1024,
+  "ewald_domains": {
+   "eedmeth": [
+    1,
+    6
+   ]
+  }
  },
  "sander": {
   "domains": {
@@ -198,6 +208,10 @@
    "ioutfm": [
     0,
     1
+   ],
+   "ntr": [
+    0,
+    1
    ]
   },
   "nonnegative": [
@@ -217,7 +231,8 @@
    "dprc": null,
    "lmod": null,
    "sebomd": null,
-   "music": null
+   "music": null,
+   "pol_gauss": "ipgm"
   },
   "rejects_namelists": [],
   "wt_types": [
@@ -261,7 +276,18 @@
   "barostat_when_ntp": [
    1,
    2
-  ]
+  ],
+  "ewald_domains": {
+   "eedmeth": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ]
+  }
  },
  "amber_namelists": [
   "abmd",
@@ -333,5 +359,6 @@
   "wt",
   "xray",
   "xtb"
- ]
+ ],
+ "gb_min_cut": 8.05
 }

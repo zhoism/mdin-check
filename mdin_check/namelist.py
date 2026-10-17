@@ -198,6 +198,8 @@ def _read_group(r: _Reader, nl: Namelist, issues: list[Issue]) -> None:
             issues.append(Issue("VALUE_WITHOUT_KEY", f"value {v.raw!r} in &{nl.name} has no 'name =' before it", v.line))
         else:
             entry.values.append(v)
+    issues.append(Issue("UNTERMINATED_NAMELIST", f"&{nl.name} (line {nl.line}) is never closed: the file ends before "
+                                                 "its '/' ('End of file')", nl.line))
     nl.terminator, nl.end_line = None, r.line
 
 

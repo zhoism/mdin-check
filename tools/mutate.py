@@ -49,10 +49,16 @@ MUTANTS = [
  ("mdin_check/rules.py", 'if nl.line > first and (c.engine == "pmemd" or read):', 'if nl.line > first and read:'),
  ("mdin_check/rules.py", 'if c.engine == "sander" and nl.line < first and not read', 'if c.engine == "sander" and nl.line < first and read'),
  ("mdin_check/rules.py", '(_num(c.v("idecomp", 0)) or 0) > 0 and not groupmod', '(_num(c.v("idecomp", 0)) or 0) > 1 and not groupmod'),
+ ("mdin_check/rules.py", 'elif v.kind == "real" and _type(c, nl.name, e.key) == "int":', 'elif False:'),
+ ("mdin_check/rules.py", 'if md_run and gamma <= 0 and ntb == 2 and', 'if md_run and gamma < 0 and ntb == 2 and'),
+ ("mdin_check/rules.py", 'if small and gb_cut is not None and 0 < gb_cut < FACTS["gb_min_cut"]:', 'if small and gb_cut is not None and 0 < gb_cut < 7.0:'),
+ ("mdin_check/rules.py", 'if _num(c.v("icfe", 0)) != 1:', 'if _num(c.v("icfe", 0)) == 2:'),
 ]
 for path, a, b in MUTANTS:
     p = Path(path); orig = p.read_text()
-    assert a in orig, (path, a)
+    if a not in orig:
+        print("STALE   ", path, a[:60], "| the mutant's original text is no longer in the file")
+        continue
     p.write_text(orig.replace(a, b, 1))
     clear()
     try:

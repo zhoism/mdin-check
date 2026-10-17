@@ -103,12 +103,12 @@ ran. Three repositories supply 1,208 of the files, so the second column counts a
 
 | engine | scored | agree | miss | false alarm | scored, max 5 per repo | agree |
 |---|---|---|---|---|---|---|
-| pmemd 26 | 916 | 916 | 0 | 0 | 433 | 433 |
-| sander (AmberTools 24.8) | 1,892 | 1,892 | 0 | 0 | 457 | 457 |
+| pmemd 26 | 876 | 876 | 0 | 0 | 432 | 432 |
+| sander (AmberTools 24.8) | 1,893 | 1,893 | 0 | 0 | 458 | 458 |
 
 This is agreement on whether the engine refuses a file. It says nothing about the `silent` findings,
 which the engine runs by definition; those rest on the cases in `tests/cases.py`. The files that cannot
-be scored are left out: 1,082 for pmemd (mostly TI inputs whose masks match their own system) and 105
+be scored are left out: 1,123 for pmemd (mostly TI inputs whose masks match their own system) and 105
 for sander (QM/MM inputs that need their own system or an external QM program, and the like). Each
 "environment" file is matched by a specific engine message, listed in `ENVIRONMENT` in
 `tools/eval_corpus.py`.
@@ -117,6 +117,36 @@ Running the corpus is how several rules were found: a file that ends right after
 sander missing a namelist when a tab or `!` follows its name, mask names over 4 characters, constant
 pH with constant pressure, template placeholders in GROUP input, and where GROUP input has to sit
 relative to the namelists (the two engines differ).
+
+### Held out
+
+The rules above were written while looking at the GitHub corpus, so it is not a fair test of them.
+Two sets were kept out until the rules were done, and run once:
+
+- 355 mdin files written by language models (Claude Haiku, Claude Sonnet, Gemini, Qwen2.5-7B) for
+  ordinary MD tasks, many of them broken in ways people do not break them;
+- 206 inputs from the official Amber tutorials (`tools/fetch_tutorials.py`, 36 tutorials).
+
+The first run of each found rules the corpus had not: integer settings written with a decimal point
+(`nstlim=1000.0`; `timlim` is an integer in pmemd and a real in sander), `ntr` outside 0/1, pmemd's
+`eedmeth`, Langevin with no friction at constant pressure, softcore TI without `icfe=1` or `ntf=1`,
+the cutoff floor for GB and vacuum runs (and sander's default `cut` of 8 Å under it), an unclosed
+namelist at the end of the file, and that errors inside a namelist the engine skips do not matter.
+It also found three faults in the harness: an HTML page scraped as an input, and environment
+patterns loose enough to file real misses as "environment". After the fixes:
+
+| set | engine | scored | agree |
+|---|---|---|---|
+| language models | pmemd | 355 | 355 |
+| language models | sander | 355 | 355 |
+| Amber tutorials | pmemd | 176 | 176 |
+| Amber tutorials | sander | 162 | 162 |
+
+These are second runs, after fixing what the first ones found, so they are no longer held out either.
+The first runs are the held-out numbers: on the language-model set pmemd agreed on 345 of 352 scored
+files (7 false alarms, all garbage inside a `&wt` the engine skips) and sander on 346 of 353 (6 false
+alarms, 1 miss); on the tutorials, pmemd agreed on 171 of 176 (5 misses) once the harness faults were
+fixed. The next unseen set is the honest test.
 
 ## Limits
 

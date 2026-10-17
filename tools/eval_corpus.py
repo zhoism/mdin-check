@@ -27,13 +27,22 @@ from mdin_check.namelist import parse  # noqa: E402
 SYS = ROOT / "tests" / "systems"
 CAP = 5
 
-# Engine messages that mean "this file needs its own system or files", not "the input is wrong".
+# Engine messages that mean "this file needs its own system, files or build", not "the input is wrong".
+# Matched against the engine's error line. Every alternative is a specific phrase: a bare word such as
+# NATOM or MPI also appears in every normal run's output, and once hid real misses here.
 ENVIRONMENT = re.compile(
     r"could not find enough velocities|cannot open|could not open|No such file|file not found|does not exist|"
-    r"Error opening|DISANG|LISTIN|LISTOUT|DUMPAVE|out of range|number of atoms|natom|cpin|cein|groupfile|"
-    r"numgroup|must be compiled|recompile|GPU|cuda|MPI|parallel|linearly scaled atoms|does not have match|"
-    r"must exsit|must exist|radius .* outside|Error on OPEN|OPNMRG|does not have match|must match at least one atom|"
-    r"External program|max pairlist cutoff|half smallest box|ew_legal|Regenerate prmtop|larger box|NOT AVAILABLE FOR THIS ATOM|no PM3 parameters|Executable .{1,20} not found|odd number of electrons|is not enabled", re.I)
+    r"Error opening|Error on OPEN|OPNMRG|is missing or unreadable|"
+    r"must match the same number of atoms|linearly scaled atoms|does not have match in V|"
+    r"must match at least one atom|numgroup must be|groupfile|requires a parallel build|must be compiled|recompile|"
+    r"\bGPU\b|\bCUDA\b|must exsit|must exist|has a radius .* outside|External program|"
+    r"max pairlist cutoff|half smallest box|ew_legal|Regenerate prmtop|residue .* out of range|atom .* out of range|"
+    r"requires MPI",
+    re.I)
+# Messages that can sit further down the log than the first error line (QM/MM set-up, external programs).
+ENVIRONMENT_LOG = re.compile(
+    r"QM region \+ cutoff larger than box|need larger box|NOT AVAILABLE FOR THIS ATOM|no PM3 parameters|"
+    r"Executable \"\w+\" not found|Program \w+ not found|odd number of electrons|is not enabled|requires MPI", re.I)
 
 
 def system_for(text: str) -> tuple[Path, Path]:
@@ -70,7 +79,7 @@ def one(path: Path, eng: str) -> dict:
         outcome = "agree"
     elif re.search(r"&debugf[^/]*do_debugf\s*=\s*1", text, re.I | re.S):
         outcome = "unverifiable"      # a debug-force run stops by design before the step the harness waits for
-    elif ENVIRONMENT.search(err or "") or ENVIRONMENT.search(log[-4000:]):
+    elif ENVIRONMENT.search(err or "") or ENVIRONMENT_LOG.search(log[-4000:]):
         outcome = "environment"
     else:
         outcome = "miss"
